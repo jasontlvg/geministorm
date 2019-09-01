@@ -14,80 +14,82 @@
                 <i class="right arrow icon"></i>Siguiente
             </button>
         </div>
+
+
+        <!-- tabSection -->
         <!-- Quita el show -->
-        <section class="main__tabSection" id="tab">
+        <section class="main__tabSection surveys" id="tab">
+            <!-- Estandar -->
             <div class="main__tabSection__titleContainer">
                 <h3 class="main__tabSection__titleContainer__title">Seleccione una Encuesta</h3>
             </div>
 
-            <div class="main__tabSection__body main__tabSection__body__surveySection">
-                <div class="main__tabSection__body__surveysContainer main__tabSection__body__surveySection__surveysContainer">
+            <!-- Estandar -->
+            <div class="main__tabSection__body main__tabSection__body--surveysSection">
+
+                <div class="main__tabSection__body--surveysSection__surveysContainer">
+
+                    <!-- <div v-for="survey in resultados[0]" class="main__tabSection__body--surveysSection__surveysContainer__survey">
+                        <p>{{survey.encuesta.nombre}}</p>
+                    </div> -->
+
+
+                    <!-- <div class="main__tabSection__body--surveysSection__surveysContainer__survey">
+                        <i class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fa-users"></i>
+                        <div class="main__tabSection__body--surveysSection__surveysContainer__survey__description">
+                            <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__title">Personas</p>
+                            <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__status">Lorem Ipsum 45</p>
+                        </div>
+                        <div class="main__tabSection__body--surveysSection__surveysContainer__survey__control">
+                            <i class="fas fa-info-circle main__tabSection__body--surveysSection__surveysContainer__survey__control__info"></i>
+                        </div>
+                    </div> -->
+
+                    <div v-for="survey in resultados[0]" class="main__tabSection__body--surveysSection__surveysContainer__survey">
+                        <i class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fa-users"></i>
+                        <div class="main__tabSection__body--surveysSection__surveysContainer__survey__description">
+                            <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__title">{{survey.encuesta.nombre}}</p>
+                            <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__status">Lorem Ipsum 45</p>
+                        </div>
+                        <div class="main__tabSection__body--surveysSection__surveysContainer__survey__control">
+                            <i class="fas fa-info-circle main__tabSection__body--surveysSection__surveysContainer__survey__control__info"></i>
+                        </div>
+                    </div>
+
                     
-                    <div class="main__tabSection__body__surveySection__surveysContainer__survey">
-                        <div class="main__tabSection__body__surveySection__surveysContainer__survey__iconContainer">
-                            <i class="fas fa-users"></i>
-                        </div>
-
-                        <div class="main__tabSection__body__surveySection__surveysContainer__survey__title">
-                            <h3>Personas</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="main__tabSection__body__surveySection__surveysContainer__survey">
-                        <div class="main__tabSection__body__surveySection__surveysContainer__survey__iconContainer">
-                            <i class="fas fa-users"></i>
-                        </div>
-
-                        <div class="main__tabSection__body__surveySection__surveysContainer__survey__title">
-                            <h3>Personas</h3>
-                        </div>
-                    </div>
-
-                    <div class="main__tabSection__body__surveySection__surveysContainer__survey">
-                        <div class="main__tabSection__body__surveySection__surveysContainer__survey__iconContainer">
-                            <i class="fas fa-users"></i>
-                        </div>
-
-                        <div class="main__tabSection__body__surveySection__surveysContainer__survey__title">
-                            <h3>Personas</h3>
-                        </div>
-                    </div>
-
-                    <div class="main__tabSection__body__surveySection__surveysContainer__survey">
-                        <div class="main__tabSection__body__surveySection__surveysContainer__survey__iconContainer">
-                            <i class="fas fa-users"></i>
-                        </div>
-
-                        <div class="main__tabSection__body__surveySection__surveysContainer__survey__title">
-                            <h3>Personas</h3>
-                        </div>
-                    </div>
-
-                    <div class="main__tabSection__body__surveySection__surveysContainer__survey">
-                        <div class="main__tabSection__body__surveySection__surveysContainer__survey__iconContainer">
-                            <i class="fas fa-users"></i>
-                        </div>
-
-                        <div class="main__tabSection__body__surveySection__surveysContainer__survey__title">
-                            <h3>Personas</h3>
-                        </div>
-                    </div>
-
                 </div>
+
+                <!-- <p>HOla</p> -->
+
+
+
+
+
+                <!-- <button class="ui right labeled icon button" id="nextMain" @click="nextPage($event)">
+                    <i class="right arrow icon"></i>Siguiente
+                </button> -->
+            </div>
+        </section>
+
+
+        <!-- tabSection -->
+        <section class="main__tabSection" id="tab">
+            <!-- Estandar -->
+            <div class="main__tabSection__titleContainer">
+                <h3 class="main__tabSection__titleContainer__title">Informacion de Encuesta</h3>
+            </div>
+
+            <!-- Estandar -->
+            <div class="main__tabSection__body main__tabSection__body--surveySection">
+                <!-- <button @click="nextPage">Aplastar</button> -->
+
+                
+
                 <button class="ui right labeled icon button disabled" id="nextMain" @click="nextPage($event)">
                     <i class="right arrow icon"></i>Siguiente
                 </button>
             </div>
-        </section>
 
-        <section class="main__tabSection" id="tab">
-            <div class="main__tabSection__titleContainer">
-                <h3 class="main__tabSection__titleContainer__title">Informacion de Encuesta</h3>
-            </div>
-            <!-- <button @click="nextPage">Aplastar</button> -->
-            <button class="ui right labeled icon button disabled" id="nextMain" @click="nextPage($event)">
-                <i class="right arrow icon"></i>Siguiente
-            </button>
         </section>
         
     </main>
@@ -99,12 +101,14 @@
         data:function(){
             return{
                 departamentos: [],
-                departamentoSeleccionado: {}
+                departamentoSeleccionado: {},
+                resultados: {},
+                promediosGlobales:[]
             }
         },
         created: function(){
             let este=this;
-            axios.post(raiz+'api/results')
+            axios.get(raiz+'api/results')
             .then( ({data}) => {
                 // console.log(JSON.parse(JSON.stringify(data)))
                 este.departamentos= data;
@@ -119,9 +123,47 @@
         }
         ,
         methods: {
-            saludo(dep){
-                
+            saludo(){
+                console.log('Exito')
                 // this.departamentoSeleccionado= dep;
+            },
+            getData:function(){
+                let este= this;
+                axios.get(raiz + `api/getdata/${este.departamentoSeleccionado.id}`)
+                .then(function (response) {
+                    // handle success
+                    // console.log(response.data);
+                    este.resultados= response.data;
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                    // console.log(typeof este.resultados)
+                    // console.log(este.resultados[2][1])
+                    let numEncuestas= este.resultados[0].length;
+
+
+                    for(let i=1; i<=numEncuestas; i++){
+                        // console.log(este.resultados[2][i])
+                        let sum=0;
+                        let promediosPregunta= este.resultados[2][i];
+                        let numPreguntas= promediosPregunta.length;
+                        // console.log(promediosPregunta.length)
+                        for (const promedioPregunta of promediosPregunta) {
+                            sum= sum + promedioPregunta;
+                            // console.log(promedioPregunta)
+                        }
+                        // este.promediosGlobales[]
+                        console.log(sum/numPreguntas)
+
+                    }
+
+
+
+                });
             },
             selectedDep: function(dep,event){
                 this.departamentoSeleccionado= dep;
@@ -141,29 +183,17 @@
                 if(containerParent.classList[0] == 'main'){
                     // console.dir(containerParent.children[2].classList.toggle('show'))
                     containerParent.children[2].classList.toggle('show')
+                    this.getData()
                 }else{
                     let nextPage= containerParent.nextElementSibling;
                     // console.dir(nextPage)
                     if(nextPage != null){
                         console.dir(nextPage.classList.toggle('show'))
+
                     }else{
                         console.log('Ya no hay otra pagina')
                     }
-
                 }
-
-
-                // let classesOfButton= event.target.classList;
-                // let lastClassOfButton=classesOfButton[classesOfButton.length-1];
-                // if(lastClassOfButton=='main__button'){
-                //     console.log('Sigue la primera pagina')
-                //     let a= document.getElementById('tab')
-                //     a.classList.toggle('show')
-                // }else{
-
-                // }
-
-
             }
         }
     }
@@ -183,7 +213,7 @@
             overflow-x: hidden;
             overflow-y: auto;
             @media screen and (min-width: $large) {
-                overflow-y: hidden;
+                overflow-y: auto; // antes hidden
             }
 
             // background: blue;

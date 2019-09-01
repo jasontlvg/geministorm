@@ -2,6 +2,7 @@
 const fontawesome= require('./scss/fontawesome/css/all.scss');
 const semantic= require('./scss/semantic/semantic.scss'); 
 const semanticjs=require('./js/semantic');
+import Chart from 'chart.js';
 
 // Control de los Menu del Layout del Admin
 import {AdminLayout} from './js/adminLayout.js';

@@ -39,6 +39,58 @@
             display: flex;
             justify-content: center;
             padding: 3em;
+            
+            //LOGITECH
+            &--surveySection{
+                padding: 1em;
+                // background: red;
+                &__detailsContainer{
+
+                    &__button{
+                        position: absolute;
+                        right: 0;
+                    }
+
+                    // background: green;
+                    position: relative;
+                    max-width: 1100px;
+                    flex: 1 1 auto; // Experimental
+                    display: flex;
+                    flex-wrap: wrap;
+                    &__detail{
+                        &__title{
+                            margin: 0;
+                            font-size: 1em;
+                        }
+
+                        &__name{
+                            font-size: 1.3em;
+                            color: #2596BF;
+                        }
+                        margin-right: 2em;
+
+                        &--media{
+                            &__title{
+                                // color:red;
+                            }
+
+                            &__name{
+                                color:green;
+                                &.alert{
+                                    color: tomato;
+                                    font-weight: bold;
+                                }
+
+                            }
+                        }
+                    }
+
+
+
+                }
+                
+            }
+
             &__title{
                 font-size: 2em
             }
@@ -153,6 +205,44 @@
                 justify-content: center;
                 &__table{
                     max-width:1100px;
+                    // background: red !important;
+
+                    &__tbody{
+
+                        &__tr{
+
+                            &__td{
+
+                                &--details{
+                                    // display: flex;
+                                    // justify-content: center;
+                                    text-align: center;
+                                    // align-content: center;
+                                    // padding: 0 !important;
+                                    i{
+                                        color: $iconsColor;
+                                        cursor: pointer;
+                                        text-align: center !important;
+                                        display: flex;
+                                        justify-content: center;
+                                        @media screen and (min-width: $large) {
+                                            // width: 40em;
+                                            transition: color $masterTime;
+                                            &:hover{
+                                                color: $masterColor;
+                                            }
+                                        }
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+
+                    }
+
                 }
             }
 

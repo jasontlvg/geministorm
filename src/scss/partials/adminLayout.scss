@@ -39,7 +39,7 @@
     width: $margin-width-master;
     margin-left: -$margin-width-master;
     position: fixed;
-    z-index: 2050;
+    z-index: 5;
     background-color: white;
     // overflow: hidden;
     &__logo{
@@ -201,7 +201,7 @@
         background-color: rgba(0,0,0,.1);
         width: 100vw;
         height: 100vh;
-        z-index: 2040;
+        z-index: 1;
         display: none;
 
         &.active{

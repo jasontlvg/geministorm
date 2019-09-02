@@ -24,14 +24,49 @@ export class crudJS{
                     // console.log()
                 },
                 agregar: function(){
-                    $('.agregar')
-                    .modal({onDeny : function(){
-                        $('form').form('clear')
+                    $('.agregar').modal('show');
 
-                        // console.log(document.getElementsByClassName("selectToClear")[4])
-                    }})
-                    .modal('show');
-                    // console.log('Machinima')
+                    // $('.agregar')
+                    // .modal({onDeny : function(){
+                    //     console.log('apretado')
+                    //     $('form').form('clear')
+                    //     // console.log(document.getElementsByClassName("errorValidacion")[0])
+
+                    //     let elementosDeError= document.getElementsByClassName("errorValidacion");
+
+                    //     for (const iterator of elementosDeError) {
+                    //         iterator.style.display='none';
+                    //         console.log('desapareciendo')
+                    //     }
+
+                    // }})
+                    // .modal('show');
+                    
+                    // $('.agregar')
+                    // .modal({onDeny : function(){
+                    //     console.log('apretado')
+                    //     $('form').form('clear')
+                    //     // console.log(document.getElementsByClassName("errorValidacion")[0])
+
+                        // let elementosDeError= document.getElementsByClassName("errorValidacion");
+
+                        // for (const iterator of elementosDeError) {
+                        //     iterator.style.display='none';
+                        //     console.log('desapareciendo')
+                        // }
+
+                    // }})
+                    // .modal('show');
+                },
+                cancelar: function(){
+                    $('form').form('clear')
+                    let elementosDeError= document.getElementsByClassName("errorValidacion");
+
+                    for (const iterator of elementosDeError) {
+                        iterator.style.display='none';
+                        // console.log('desapareciendo')
+                    }
+                    // console.log('cerrando')
                 }
             },
         })

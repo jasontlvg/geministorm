@@ -16,7 +16,7 @@ const styles= require('./scss/empleados.scss');
 
 import {crudJS} from './js/crudJS.js';
 let cjs= new crudJS;
-cjs.acciones("./empleados/destruir/");
+cjs.acciones("./empleados/destruir/"); // Aqui esta el problema
 
 $('.ui.search.dropdown').dropdown();
 
@@ -36,3 +36,14 @@ $('.ui.form')
     }
   })
 ;
+
+window.abrir= function(permiso=false){
+    this.console.log(permiso)
+    if(permiso==true){
+        $('.agregar').modal('show');
+    }
+}
+
+// $('.agregar').modal('show');
+
+// window.abrir(true);

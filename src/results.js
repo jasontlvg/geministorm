@@ -16,7 +16,7 @@ const styles= require('./scss/results.scss');
 // Axios -- Comenta el codigo especial si vas a trabajas desde VSC, descomentalo cuando lo pases al server
 
 // window.raiz='./';
-window.raiz='http://geminigold.com/admin/';
+window.raiz='http://geministorm.com/admin/';
 
 window.axios = require('axios');
 // window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

@@ -9,6 +9,7 @@ module.exports = {
     entry: {
         index:'./src/index.js',
         results:'./src/results.js',
+        empleados:'./src/empleados.js',
         // empresas: './src/empresas.js',
     },
     output: {
@@ -83,6 +84,7 @@ module.exports = {
         new CleanWebpackPlugin({}),
         new HtmlWebpackPlugin({template: './src/pug/index.pug', filename: 'index.html',minify: false, chunks: ['index']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
         new HtmlWebpackPlugin({template: './src/pug/results.pug', filename: 'results.html',minify: false, chunks: ['results']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
+        new HtmlWebpackPlugin({template: './src/pug/empleados.pug', filename: 'empleados.html',minify: false, chunks: ['empleados']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
         // new HtmlWebpackPlugin({template: './src/pug/empresas.pug', filename: 'empresas.html' ,minify: false, chunks: ['empresas']}),
         new MiniCssExtractPlugin({filename: "css/[name].css", chunkFilename: "[id].css" }), // Borra el 'css/' si quieres que se guarde en la raiz de 
         new webpack.ProvidePlugin({ $: 'jquery' }),

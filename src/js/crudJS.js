@@ -6,7 +6,7 @@ export class crudJS{
 
     acciones(link){
         let app= new Vue({
-            el: '#section',
+            el: '#main',
             data: {
         
             },

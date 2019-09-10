@@ -384,7 +384,7 @@
             modal: function(arr){
                 console.log(arr)
                 $('.ui.modal').modal('show');
-                console.log(window.myChart)
+                // console.log(window.myChart)
 
                 if(window.chart != undefined){
                     // console.log('Destruyendo')

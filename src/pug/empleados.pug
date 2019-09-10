@@ -1,8 +1,12 @@
 extends partials/adminLayout.pug
-block header
-    +headerTitle('Empleados')
-    <button class="ui green button lolo" @click="agregar()"><i class="address book icon"></i>Agregar Empleado</button>
+//- block header
+//-     +headerTitle('Empleados')
+//-     <button class="ui green button lolo" @click="agregar()"><i class="address book icon"></i>Agregar Empleado</button>
 block main
+    .main__headerCrud
+        <i class="fas fa-bars main__headerCrud__burguer" id="trigger"></i>
+        +headerTitle('Empleados')
+        <button class="ui green button lolo" @click="agregar()"><i class="address book icon"></i><span class="texto">Agregar Empleado</span></button>
     .main__results#app
         <table class="ui selectable celled table">
             <thead class="table__thead">

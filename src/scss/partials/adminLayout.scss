@@ -235,18 +235,18 @@
         background: $backgroundColor;
         // background-color: white;
         // flex: 0 0 auto;
-        &__burguer{
-            color: $iconsColor;
-            font-size: 2em;
-            @media screen and (min-width: $large) {
-                display: none;
-            }
-        }
+        // &__burguer{
+        //     color: $iconsColor;
+        //     font-size: 2em;
+        //     @media screen and (min-width: $large) {
+        //         display: none;
+        //     }
+        // }
 
         &__title{
             font-size: 1.8em;
             margin: 0;
-            margin-left: 0.8em;
+            // margin-left: 0.8em;
             @media screen and (min-width: $large) {
                 margin-left: 0;
             }

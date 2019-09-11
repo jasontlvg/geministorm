@@ -10,19 +10,20 @@ module.exports = {
         index:'./src/index.js',
         results:'./src/results.js',
         empleados:'./src/empleados.js',
+        departamentos:'./src/departamentos.js',
         // empresas: './src/empresas.js',
     },
     output: {
-        path: __dirname+'/dist/',
+        path: __dirname+'/dist',
         publicPath: '/',
         filename: 'js/[name].js', // Quita el js/ si tenemos problemas
         // filename: 'js/[name].[chunkhash].js', // Quita el js/ si tenemos problemas
         // publicPath: "/dist/"
     },
     devServer:{
-        contentBase: __dirname+'/dist/',
+        contentBase: __dirname+'/dist',
         compress: true,
-        port: 9000,
+        port: 1234,
         disableHostCheck: true
     },
     // devtool: 'source-map',
@@ -43,16 +44,7 @@ module.exports = {
                 use: [
                     "style-loader", // creates style nodes from JS strings
                     {loader: MiniCssExtractPlugin.loader},
-                    "css-loader", // translates CSS into CommonJS
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                          ident: 'postcss',
-                          plugins: [
-                            autoprefixer({browsers: 'last 2 versions'}),
-                          ]
-                        }
-                    },
+                    "css-loader",
                     "resolve-url-loader",
                     "sass-loader?outputStyle=compressed" // compiles Sass to CSS, using Node Sass by default 'compressed&sourceMap'
                 ]
@@ -85,6 +77,7 @@ module.exports = {
         new HtmlWebpackPlugin({template: './src/pug/index.pug', filename: 'index.html',minify: false, chunks: ['index']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
         new HtmlWebpackPlugin({template: './src/pug/results.pug', filename: 'results.html',minify: false, chunks: ['results']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
         new HtmlWebpackPlugin({template: './src/pug/empleados.pug', filename: 'empleados.html',minify: false, chunks: ['empleados']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
+        new HtmlWebpackPlugin({template: './src/pug/departamentos.pug', filename: 'departamentos.html',minify: false, chunks: ['departamentos']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
         // new HtmlWebpackPlugin({template: './src/pug/empresas.pug', filename: 'empresas.html' ,minify: false, chunks: ['empresas']}),
         new MiniCssExtractPlugin({filename: "css/[name].css", chunkFilename: "[id].css" }), // Borra el 'css/' si quieres que se guarde en la raiz de 
         new webpack.ProvidePlugin({ $: 'jquery' }),

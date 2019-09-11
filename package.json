@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "webpack-dev-server --mode development --watch"
+    "start:dev": "webpack-dev-server --mode development --watch",
+    "start:probe": "webpack-dev-server --config ./webpack.config.js --hot"
   },
   "keywords": [],
   "author": "",
@@ -35,9 +36,9 @@
     "vue": "^2.6.10",
     "vue-loader": "^15.7.1",
     "vue-template-compiler": "^2.6.10",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.1"
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
     "@amcharts/amcharts4": "^4.5.12",

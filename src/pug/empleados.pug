@@ -31,16 +31,16 @@ block main
                     <td class="table__tbody__tr__td">Nocturna</td>
                     <td class="table__tbody__tr__td">Biologia</td>
                     <td class="table__tbody__tr__td table__tbody__tr__td--editContainer">
-                        <i class="edit icon icon table__tbody__tr__td--editContainer__icon"></i>
-                        <i class="trash icon table__tbody__tr__td--editContainer__icon lolo" @click="eliminar(5)"></i>
+                        <i class="table__tbody__tr__td--editContainer__icon table__tbody__tr__td--editContainer__icon--edit   fas fa-user-edit"></i>
+                        <i class="table__tbody__tr__td--editContainer__icon table__tbody__tr__td--editContainer__icon--delete fas fa-user-minus" @click="eliminar(5)"></i>
                     </td>
                 </tr>
             </tbody>
         </table>
         //- Modal de Confirmacion de Eliminar Usuario
-        <div class="ui mini test modal transition hidden">
-            <div class="header">Eliminar Empleado</div>
-            <div class="content"><p>Se eliminara al Empleado sin posibilidad de Revertirlo</p></div>
+        <div class="ui mini test modal transition hidden eliminar">
+            <div class="header">¿Esta Seguro?</div>
+            <div class="content"><p>Se eliminara el elemento seleccionado permanentemente</p></div>
             <div class="actions">
             <div class="ui negative button">No</div>
             <div class="ui positive right labeled icon button">Yes<i class="checkmark icon"></i></div>

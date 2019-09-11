@@ -15,9 +15,12 @@ export class crudJS{
                     console.log('Hola'+l);
                 },
                 eliminar: function(id){
-                    $('.mini.modal')
+                    console.log('Eliminaremos: '+id);
+                    console.log('A la ruta: ' + link+id)
+                    $('.mini.modal.eliminar')
                     .modal({onApprove : function(){
                         // console.log('Hola'+l)
+                        console.log('Eliminando!!!')
                         window.location.href = link+id;  
                     }})
                     .modal('show');

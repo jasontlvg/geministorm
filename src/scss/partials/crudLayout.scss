@@ -88,22 +88,49 @@
                 &--editContainer{
                     // display: flex;
                     // justify-content: space-around;
-                    &__icon.icon{
+                    // display: flex;
+                    // justify-content: space-between;
+
+                    &__icon{
+                        width: 3em;
+                        // height: 40px;
+                        padding: 1em;
+                        background: purple;
+                        text-align: center;
+                        // line-height: 40px;
                         cursor: pointer;
-                        // background: #e6f8fc;
-                        // table__tbody__tr__td--editContainer__icon
-                        // background: red;
-                        color: #00bae5;
-                        // width: 2.5em;
-                        // height: 2.5em;
-                        display: inline-flex;
-                        justify-content: center;
-                        align-items: center;
+                        color: $backgroundColor;
+                        &--edit{
+                            background: #2185d0;
+                            border-radius: 0.28571429rem;
+                        }
+
+                        &--delete{
+                            background: tomato;
+                            border-radius: 0.28571429rem;
+                        }
+
                     }
-                    .lolo{
-                        // background: #ffebea;
-                        color:#f60f07;
-                    }
+
+                    // &__icon.icono{
+                    //     cursor: pointer;
+                    //     // background: #e6f8fc;
+                    //     // table__tbody__tr__td--editContainer__icon
+                    //     // background: red;
+                    //     color: #00bae5;
+                    //     // width: 2.5em;
+                    //     // height: 2.5em;
+                    //     display: inline-flex;
+                    //     justify-content: center;
+                    //     align-items: center;
+                        
+                    // }
+                    // .lolo{
+                    //     // background: #ffebea;
+                    //     color:#f60f07;
+                    //     width: 30px;
+                    //     height: 30px;
+                    // }
                 }
             }
         }

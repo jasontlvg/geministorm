@@ -9,3 +9,13 @@
     margin-left: 0.5em !important;
 }
 
+.ui.form{
+    // padding: 1em;
+}
+
+.ui.warning.message{
+    width: 100%;
+    .header{
+        background: red;
+    }
+}

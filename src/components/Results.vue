@@ -1,6 +1,5 @@
 <template>
     <main class="main">
-
         <div class="main__titleContainer">
             <h3 class="main__titleContainer__title">Seleccione un Departamento</h3>
         </div>
@@ -45,13 +44,23 @@
                         </div>
                     </div> -->
 
-                    <div v-for="(survey, index) in resultados[0]" class="main__tabSection__body--surveysSection__surveysContainer__survey" v-bind:class="{alert:promediosGlobales[survey.encuesta_id]<3}">
+                    <div v-for="(survey, index) in resultados[0]" class="main__tabSection__body--surveysSection__surveysContainer__survey" v-bind:class="{alert:promediosGlobales[survey.encuesta_id]<3 || encuestaMenor == promediosGlobales[survey.encuesta_id]}">
                         
                         <!-- <p>{{promediosGlobales[survey.encuesta_id]}}</p> -->
-                        <i class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fa-users"></i>
+                        <i v-if="survey.encuesta.nombre == 'Personas'" class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fa-users"></i>
+                        <i v-else-if="survey.encuesta.nombre == 'Producto'" class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fa-truck-loading"></i>
+                        <i v-else-if="survey.encuesta.nombre == 'Act. Cambio Rápido'" class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fa-share-square"></i>
+                        <i v-else-if="survey.encuesta.nombre == 'Procesos'" class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fas fa-hat-wizard"></i>
+                        <i v-else-if="survey.encuesta.nombre == 'Practica'" class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fas fa-clipboard-list"></i>
+                        <i v-else class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fas fa-poo-storm"></i>
+                        
                         <div class="main__tabSection__body--surveysSection__surveysContainer__survey__description">
                             <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__title">{{survey.encuesta.nombre}}</p>
-                            <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__status">La Media es de: {{promediosGlobales[survey.encuesta_id]}}</p>
+                            <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__status" v-bind:class="{calafiero:encuestaMenor == promediosGlobales[survey.encuesta_id]}">La Media es de: {{promediosGlobales[survey.encuesta_id]}}</p>
+                            <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__flags" v-bind:class="{calafiero:encuestaMenor == promediosGlobales[survey.encuesta_id]}">Indicadores: {{flags[index]}}</p>
+                            <!-- <p>{{index}}</p> -->
+                            <!-- CALAFIA -->
+                            <!-- <p>{{encuestaMenor == 1}}</p> -->
                         </div>
                         <div class="main__tabSection__body--surveysSection__surveysContainer__survey__control">
                             <i class="fas fa-info-circle main__tabSection__body--surveysSection__surveysContainer__survey__control__info" @click="nextPage($event,survey.encuesta_id,index)"></i>
@@ -141,7 +150,7 @@
 
                             <!-- <td data-label="Job">{{respuestasEncuestaSeleccionada[index]}}</td> -->
                             <!-- <td data-label="Job" @click="modal(respuestasEncuestaSeleccionada[index])">{{respuestasEncuestaSeleccionada[index]}}</td> -->
-                            <td data-label="Details" @click="modal(respuestasEncuestaSeleccionada[index])" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td--details"><i class="fas fa-info-circle"></i></td>
+                            <td data-label="Details" @click="modal(respuestasEncuestaSeleccionada[index],((index+1) + '. ' +x.pregunta))" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td--details"><i class="fas fa-info-circle"></i></td>
                             
                         </tr>
                     </tbody>
@@ -151,7 +160,7 @@
                 <div class="ui modal">
                 <i class="close icon"></i>
                 <div class="header">
-                    Profile Picture
+                    {{preguntaActual}}
                 </div>
                 <div class="image content">
                     <canvas id="myChart"></canvas>
@@ -186,7 +195,10 @@
                 respuestasEncuestaSeleccionada:[],
                 promedioDePreguntasDeEncuestaSeleccionada:[],
                 respuestasDePreguntas: [],
-                encuestaSeleccionada: {}
+                encuestaSeleccionada: {},
+                encuestaMenor: 0,
+                flags: [],
+                preguntaActual: ''
             }
         },
         created: function(){
@@ -226,11 +238,13 @@
                 // this.departamentoSeleccionado= dep;
             },
             getData:function(){
+                
                 let este= this;
                 axios.get(raiz + `api/getdata/${este.departamentoSeleccionado.id}`)
                 .then(function (response) {
                     // handle success
                     // console.log(response.data);
+                    //Aqui obtenemos los resultados, ya nos retornan los resultados, y los resultados filtrados (ademas de las encuestas disponibles)
                     este.resultados= response.data;
 
                     let encuestasDisponibles= este.resultados[0];
@@ -241,17 +255,34 @@
                         let promediosPregunta= este.resultados[2][i];
                         let numPreguntas= promediosPregunta.length;
                         // console.log(promediosPregunta.length)
+                        let flag=0;
                         for (const promedioPregunta of promediosPregunta) {
                             sum= sum + promedioPregunta; // Solito este, ya sirve
                             // sum= sum + promedioPregunta; // Solito este, ya sirve
                             // console.log(promedioPregunta)
+
+                            // Nuevo
+                            if(promedioPregunta<=3){
+                                flag++;
+                            }
                         }
+                        // console.log(flag)
+                        este.flags.push(flag);
                         let x= sum/numPreguntas; // decimal
-                        este.promediosGlobales[i]= x.toFixed(4); // No borrar, si quieres que en los promedios globales, se agregen por id de encuesta y no seguidas, descomenta esto, y comenta el de abajo, decimal
+
+                        // este.promediosGlobales[i]= (x.toFixed(4)); // No borrar, si quieres que en los promedios globales, se agregen por id de encuesta y no seguidas, descomenta esto, y comenta el de abajo, decimal
+                        este.promediosGlobales[i]= parseFloat(x.toFixed(4)); // No borrar, si quieres que en los promedios globales, se agregen por id de encuesta y no seguidas, descomenta esto, y comenta el de abajo, decimal
+                        
                         // este.promediosGlobales[i]= sum/numPreguntas; // No borrar, si quieres que en los promedios globales, se agregen por id de encuesta y no seguidas, descomenta esto, y comenta el de abajo
                         // este.promediosGlobales.push(sum/numPreguntas);
                         // console.log(sum/numPreguntas)
                     }
+                    // let nana= [1,2,3]
+                    este.promediosGlobales[0]=10000000;
+                    let caja= este.promediosGlobales;
+                    // console.log(caja)
+                    este.encuestaMenor= Math.min(...caja)
+                    // console.log(Math.min(...caja))
                 })
                 .catch(function (error) {
                     // handle error
@@ -381,8 +412,10 @@
                     
                 }
             },
-            modal: function(arr){
+            modal: function(arr,pregunta){
                 console.log(arr)
+                console.log(pregunta);
+                this.preguntaActual= pregunta;
                 $('.ui.modal').modal('show');
                 // console.log(window.myChart)
 
@@ -418,6 +451,16 @@
 
                     // Configuration options go here
                     options: {
+                        legend: {
+                            display: false
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                        return tooltipItem.yLabel;
+                                }
+                            }
+                        },
                         scales: {
                             yAxes: [{
                                 ticks: {

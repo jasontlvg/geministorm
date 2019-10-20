@@ -4,19 +4,19 @@ const semantic= require('./scss/semantic/semantic.scss');
 const semanticjs=require('./js/semantic');
 
 // Control de los Menu del Layout del Admin
-import {AdminLayout} from './js/adminLayout.js';
-let al= new AdminLayout;
-al.master();
-al.onlyInMain();
+// import {AdminLayout} from './js/adminLayout.js';
+// let al= new AdminLayout;
+// al.master();
+// al.onlyInMain();
 // Files de la Pagina
 const styles= require('./scss/empleados.scss');
 
 
 // import Vue from 'vue';
 
-import {crudJS} from './js/crudJS.js';
-let cjs= new crudJS;
-cjs.acciones("./empleados/destruir/"); // Aqui esta el problema
+// import {crudJS} from './js/crudJS.js';
+// let cjs= new crudJS;
+// cjs.acciones("./empleados/destruir/"); // Aqui esta el problema
 
 $('.ui.search.dropdown').dropdown();
 
@@ -37,14 +37,12 @@ $('.ui.form')
   })
 ;
 
-window.abrir= function(permiso=false){
-    this.console.log(permiso)
-    if(permiso==true){
-        $('.agregar').modal('show');
-    }
-}
-
-// $('.agregar').modal('show');
+// window.abrir= function(permiso=false){
+//     this.console.log(permiso)
+//     if(permiso==true){
+//         $('.agregar').modal('show');
+//     }
+// }
 
 // window.abrir(true);
 
@@ -64,6 +62,8 @@ const tf= function(){
   }
 };
 
-const trigger= document.getElementById('trigger');
+// const trigger= document.getElementById('trigger');
 
-trigger.addEventListener('click', tf);
+// trigger.addEventListener('click', tf);
+
+$('.agregar').modal({closable : false,}).modal('show');

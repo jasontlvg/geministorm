@@ -65,6 +65,8 @@
                         <div class="main__tabSection__body--surveysSection__surveysContainer__survey__control">
                             <i class="fas fa-info-circle main__tabSection__body--surveysSection__surveysContainer__survey__control__info" @click="nextPage($event,survey.encuesta_id,index)"></i>
                         </div>
+
+
                     </div>
 
                     
@@ -365,6 +367,7 @@
                     let nextPage= containerParent.nextElementSibling;
                     // console.dir(nextPage)
                     if(nextPage != null){
+                        // SIEMENS
                         nextPage.classList.toggle('show')
                         // console.dir(nextPage.classList.toggle('show'))
                         // console.log(encuestaId)

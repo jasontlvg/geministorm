@@ -1,4 +1,41 @@
 extends partials/adminLayout.pug
 block header
-    //- +headerTitle('Index')
+    +headerTitle('Index')
 block main
+    .container
+        .positioner.positioner--top
+            .positioner__box.positioner__box__leftColumn
+                .positioner__box__leftColumn__leftSide
+                    <i class="clipboard list icon"></i>
+                    h2.up Practica
+                .positioner__box__leftColumn__rightSide.positioner__box__leftColumn__rightSide--top
+                    <i class="info circle icon"></i>
+
+
+            .positioner__box.positioner__box__rightColumn
+                .positioner__box__rightColumn__leftSide
+                    <i class="info circle icon"></i>
+                .positioner__box__rightColumn__rightSide.positioner__box__leftColumn__rightSide--top
+                    <i class="cog icon"></i>
+                    h2 Procesos
+
+
+        .positioner.positioner--bottom
+            .positioner__box.positioner__box__leftColumn
+                .positioner__box__leftColumn__leftSide
+                    h2.down Personas
+                    <i class="users icon"></i>
+                    //- span La Media es de: 3.4739
+                    //- span La Media es de: 3.4739
+                .positioner__box__leftColumn__rightSide.positioner__box__leftColumn__rightSide--bottom
+                    <i class="info circle icon"></i>
+
+            .positioner__box.positioner__box__rightColumn
+                .positioner__box__rightColumn__leftSide
+                    <i class="info circle icon"></i>
+                .positioner__box__rightColumn__rightSide.positioner__box__leftColumn__rightSide--bottom
+                    h2.down Productos
+                    <i class="box icon"></i>
+                
+        .oval
+        .oval.oval__border

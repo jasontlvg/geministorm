@@ -26,9 +26,27 @@
             <!-- Estandar -->
             <div class="main__tabSection__body main__tabSection__body--surveysSection">
 
-                <!-- <div class="main__tabSection__body--surveysSection__surveysContainer">
-                    <div v-for="(survey, index) in resultados[0]" class="main__tabSection__body--surveysSection__surveysContainer__survey" v-bind:class="{alert:promediosGlobales[survey.encuesta_id]<3 || encuestaMenor == promediosGlobales[survey.encuesta_id]}">
+                <div class="main__tabSection__body--surveysSection__surveysContainer">
 
+                    <!-- <div v-for="survey in resultados[0]" class="main__tabSection__body--surveysSection__surveysContainer__survey">
+                        <p>{{survey.encuesta.nombre}}</p>
+                    </div> -->
+
+
+                    <!-- <div class="main__tabSection__body--surveysSection__surveysContainer__survey">
+                        <i class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fa-users"></i>
+                        <div class="main__tabSection__body--surveysSection__surveysContainer__survey__description">
+                            <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__title">Personas</p>
+                            <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__status">Lorem Ipsum 45</p>
+                        </div>
+                        <div class="main__tabSection__body--surveysSection__surveysContainer__survey__control">
+                            <i class="fas fa-info-circle main__tabSection__body--surveysSection__surveysContainer__survey__control__info"></i>
+                        </div>
+                    </div> -->
+
+                    <div v-for="(survey, index) in resultados[0]" class="main__tabSection__body--surveysSection__surveysContainer__survey" v-bind:class="{alert:promediosGlobales[survey.encuesta_id]<3 || encuestaMenor == promediosGlobales[survey.encuesta_id]}">
+                        
+                        <!-- <p>{{promediosGlobales[survey.encuesta_id]}}</p> -->
                         <i v-if="survey.encuesta.nombre == 'Personas'" class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fa-users"></i>
                         <i v-else-if="survey.encuesta.nombre == 'Producto'" class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fa-truck-loading"></i>
                         <i v-else-if="survey.encuesta.nombre == 'Act. Cambio Rápido'" class="main__tabSection__body--surveysSection__surveysContainer__survey__icon fas fa-share-square"></i>
@@ -40,49 +58,29 @@
                             <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__title">{{survey.encuesta.nombre}}</p>
                             <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__status" v-bind:class="{calafiero:encuestaMenor == promediosGlobales[survey.encuesta_id]}">La Media es de: {{promediosGlobales[survey.encuesta_id]}}</p>
                             <p class="main__tabSection__body--surveysSection__surveysContainer__survey__description__flags" v-bind:class="{calafiero:encuestaMenor == promediosGlobales[survey.encuesta_id]}">Indicadores: {{flags[index]}}</p>
+                            <!-- <p>{{index}}</p> -->
+                            <!-- CALAFIA -->
+                            <!-- <p>{{encuestaMenor == 1}}</p> -->
                         </div>
                         <div class="main__tabSection__body--surveysSection__surveysContainer__survey__control">
                             <i class="fas fa-info-circle main__tabSection__body--surveysSection__surveysContainer__survey__control__info" @click="nextPage($event,survey.encuesta_id,index)"></i>
                         </div>
 
-                    </div>
-                </div> -->
 
-                <div class="main__tabSection__body--surveysSection__surveysContainer">
-                    <div class="positioner positioner--top">
-                        <div class="positioner__box positioner__box__leftColumn">
-                            <div class="positioner__box__leftColumn__leftSide"><i class="clipboard list icon"></i>
-                                <h2 class="up">Practica</h2>
-                            </div>
-                            <div class="positioner__box__leftColumn__rightSide positioner__box__leftColumn__rightSide--top"><i
-                                    class="info circle icon"></i></div>
-                        </div>
-                        <div class="positioner__box positioner__box__rightColumn">
-                            <div class="positioner__box__rightColumn__leftSide"><i class="info circle icon"></i></div>
-                            <div class="positioner__box__rightColumn__rightSide positioner__box__leftColumn__rightSide--top"><i
-                                    class="cog icon"></i>
-                                <h2>Procesos</h2>
-                            </div>
-                        </div>
                     </div>
-                    <div class="positioner positioner--bottom">
-                        <div class="positioner__box positioner__box__leftColumn">
-                            <div class="positioner__box__leftColumn__leftSide">
-                                <h2 class="down">Personas</h2><i class="users icon"></i>
-                            </div>
-                            <div class="positioner__box__leftColumn__rightSide positioner__box__leftColumn__rightSide--bottom"><i
-                                    class="info circle icon"></i></div>
-                        </div>
-                        <div class="positioner__box positioner__box__rightColumn">
-                            <div class="positioner__box__rightColumn__leftSide"><i class="info circle icon"></i></div>
-                            <div class="positioner__box__rightColumn__rightSide positioner__box__leftColumn__rightSide--bottom">
-                                <h2 class="down">Productos</h2><i class="box icon"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="oval"></div>
-                    <div class="oval oval__border"></div>
+
+                    
                 </div>
+
+                <!-- <p>HOla</p> -->
+
+
+
+
+
+                <!-- <button class="ui right labeled icon button" id="nextMain" @click="nextPage($event)">
+                    <i class="right arrow icon"></i>Siguiente
+                </button> -->
             </div>
         </section>
 
@@ -522,6 +520,10 @@
                     //     }
                     // }
                 // });
+
+
+
+
             }
         }
     }
@@ -608,6 +610,5 @@
     }
 
     @import '../scss/partials/tabSection.scss';
-    @import '../scss/resultsImp.scss';
     
 </style>

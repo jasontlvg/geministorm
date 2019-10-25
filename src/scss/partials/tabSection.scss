@@ -108,8 +108,7 @@
                 // background: green;
 
                 &__surveysContainer{
-                    
-
+                    width: 800px; //IMPURO ORIGINALMENTE ESTO NO ESTABA, TODO ESTABA VACIO
                     &__survey{
                         display: flex;
                         width: 25em;

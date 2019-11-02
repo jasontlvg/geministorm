@@ -48,35 +48,62 @@
                     </div>
                 </div> -->
 
-                <div class="main__tabSection__body--surveysSection__surveysContainer">
+                <div class="main__tabSection__body--surveysSection__surveysContainer" id="kleenex">
+                    <!-- pollo -->
                     <div class="positioner positioner--top">
-                        <div class="positioner__box positioner__box__leftColumn">
-                            <div class="positioner__box__leftColumn__leftSide"><i class="clipboard list icon"></i>
+                        <!-- Practica -->
+                        <div class="positioner__box positioner__box__leftColumn" v-bind:class="{alert:promediosGlobales[practica[0]]<3 || encuestaMenor == promediosGlobales[practica[0]], disabled:practica.length == 0}">
+                            <div class="positioner__box__leftColumn__leftSide">
+                                <i class="clipboard list icon"></i>
                                 <h2 class="up">Practica</h2>
                             </div>
-                            <div class="positioner__box__leftColumn__rightSide positioner__box__leftColumn__rightSide--top"><i
-                                    class="info circle icon"></i></div>
+                            <div class="positioner__box__leftColumn__rightSide positioner__box__leftColumn__rightSide--top">
+                                <!-- <i class="info circle icon" @click="nextPage($event,practica[0],practica[1])"></i> -->
+                                <!-- <i class="fas fa-info-circle main__tabSection__body--surveysSection__surveysContainer__survey__control__info" @click="nextPage($event,practica[0],practica[1])"></i> -->
+                                <!-- <i class="info circle icon"></i> -->
+                                <i v-if="practica.length > 0" class="info circle icon" @click="nextPage($event,practica[0],practica[1])"></i>
+                            </div>
                         </div>
-                        <div class="positioner__box positioner__box__rightColumn">
-                            <div class="positioner__box__rightColumn__leftSide"><i class="info circle icon"></i></div>
-                            <div class="positioner__box__rightColumn__rightSide positioner__box__leftColumn__rightSide--top"><i
-                                    class="cog icon"></i>
+
+                        <!-- Procesos -->
+                        <div class="positioner__box positioner__box__rightColumn" v-bind:class="{alert:promediosGlobales[procesos[0]]<3 || encuestaMenor == promediosGlobales[procesos[0]], disabled:procesos.length == 0}">
+                            <div class="positioner__box__rightColumn__leftSide">
+                                <!-- <i class="info circle icon"></i> -->
+                                <i v-if="procesos.length > 0" class="info circle icon" @click="nextPage($event,procesos[0],procesos[1])"></i>
+                                <!-- <i v-else class="info circle icon" @click="nextPage($event,procesos[0],procesos[1])"></i> -->
+                            </div>
+                            <div class="positioner__box__rightColumn__rightSide positioner__box__leftColumn__rightSide--top">
+                                <i class="cog icon"></i>
                                 <h2>Procesos</h2>
                             </div>
+
                         </div>
                     </div>
+
                     <div class="positioner positioner--bottom">
-                        <div class="positioner__box positioner__box__leftColumn">
+                        <!-- Personas -->
+                        <div class="positioner__box positioner__box__leftColumn" v-bind:class="{alert:promediosGlobales[personas[0]]<3 || encuestaMenor == promediosGlobales[personas[0]], disabled:personas.length == 0}">
                             <div class="positioner__box__leftColumn__leftSide">
-                                <h2 class="down">Personas</h2><i class="users icon"></i>
+                                <h2 class="down">Personas</h2>
+                                <i class="users icon"></i>
                             </div>
-                            <div class="positioner__box__leftColumn__rightSide positioner__box__leftColumn__rightSide--bottom"><i
-                                    class="info circle icon"></i></div>
+                            <div class="positioner__box__leftColumn__rightSide positioner__box__leftColumn__rightSide--bottom">
+                                <!-- <i class="info circle icon"></i> -->
+                                <!-- <i class="info circle icon" @click="nextPage($event,personas[0],personas[1])"></i> -->
+                                <i v-if="personas.length > 0" class="info circle icon" @click="nextPage($event,personas[0],personas[1])"></i>
+                            </div>
                         </div>
-                        <div class="positioner__box positioner__box__rightColumn">
-                            <div class="positioner__box__rightColumn__leftSide"><i class="info circle icon"></i></div>
+
+                        <!-- Producto -->
+                        <div class="positioner__box positioner__box__rightColumn" v-bind:class="{alert:promediosGlobales[producto[0]]<3 || encuestaMenor == promediosGlobales[producto[0]], disabled:producto.length == 0}">
+                            <div class="positioner__box__rightColumn__leftSide">
+                                <!-- <i class="info circle icon"></i> -->
+                                <!-- <i class="info circle icon" @click="nextPage($event,producto[0],producto[1])"></i> -->
+                                <i v-if="producto.length > 0" class="info circle icon" @click="nextPage($event,producto[0],producto[1])"></i>
+                            </div>
                             <div class="positioner__box__rightColumn__rightSide positioner__box__leftColumn__rightSide--bottom">
-                                <h2 class="down">Productos</h2><i class="box icon"></i>
+                                <h2 class="down">Producto</h2>
+                                <i class="box icon"></i>
                             </div>
                         </div>
                     </div>
@@ -161,7 +188,7 @@
                 </table>
 
 
-                <div class="ui modal">
+                <div class="ui modal" id="graficas">
                 <i class="close icon"></i>
                 <div class="header">
                     {{preguntaActual}}
@@ -202,7 +229,13 @@
                 encuestaSeleccionada: {},
                 encuestaMenor: 0,
                 flags: [],
-                preguntaActual: ''
+                preguntaActual: '',
+                // Para el Diseño Imp
+                practica: [],
+                procesos: [],
+                personas: [],
+                producto: [],
+                acr: []
             }
         },
         created: function(){
@@ -287,6 +320,38 @@
                     // console.log(caja)
                     este.encuestaMenor= Math.min(...caja)
                     // console.log(Math.min(...caja))
+
+                    // Aqui ya obtuvimos los resultados
+                    // console.log(este.resultados[0].length)
+                    let ed= este.resultados[0]; // ed = encuestas disponibles
+                    for(let i=0; i<ed.length; i++){
+                        // console.log(ed[i].encuesta.nombre)
+                        if(ed[i].encuesta.nombre == 'Personas'){ // if(ed[i].encuesta.nombre == 'Personas'){
+                            este.personas.push(ed[i].encuesta_id)
+                            este.personas.push(i)
+                        }
+
+                        if(ed[i].encuesta.nombre == 'Producto'){
+                            este.producto.push(ed[i].encuesta_id)
+                            este.producto.push(i)
+                        }
+
+                        if(ed[i].encuesta.nombre == 'Act. Cambio Rápido'){
+                            este.acr.push(ed[i].encuesta_id)
+                            este.acr.push(i)
+                        }
+
+                        if(ed[i].encuesta.nombre == 'Procesos'){
+                            este.procesos.push(ed[i].encuesta_id)
+                            este.procesos.push(i)
+                        }
+
+                        if(ed[i].encuesta.nombre == 'Practica'){
+                            este.practica.push(ed[i].encuesta_id)
+                            este.practica.push(i)
+                        }
+                    }
+
                 })
                 .catch(function (error) {
                     // handle error
@@ -294,55 +359,6 @@
                 })
                 .finally(function () {
                     // always executed
-                    // console.log(typeof este.resultados)
-                    // console.log(este.resultados[2][1])
-
-                    // console.log(este.resultados[0])
-
-
-
-
-                    // let encuestasDisponibles= este.resultados[0];
-                    // for (const iterator of encuestasDisponibles) {
-                    //     // console.log(iterator.encuesta_id)
-                    //     let i=iterator.encuesta_id;
-                    //     let sum=0;
-                    //     let promediosPregunta= este.resultados[2][i];
-                    //     let numPreguntas= promediosPregunta.length;
-                    //     // console.log(promediosPregunta.length)
-                    //     for (const promedioPregunta of promediosPregunta) {
-                    //         sum= sum + promedioPregunta;
-                    //         // console.log(promedioPregunta)
-                    //     }
-                    //     este.promediosGlobales[i]= sum/numPreguntas; // No borrar, si quieres que en los promedios globales, se agregen por id de encuesta y no seguidas, descomenta esto, y comenta el de abajo
-                    //     // este.promediosGlobales.push(sum/numPreguntas);
-                    //     console.log(sum/numPreguntas)
-                    // }
-
-
-
-
-                    // Este de abajo, listo
-                    // let numEncuestas= este.resultados[0].length;
-
-                    // // console.log('Numero de encuestas'+ numEncuestas)
-                    // for(let i=1; i<=numEncuestas; i++){
-                    //     // console.log(este.resultados[2][i])
-                    //     let sum=0;
-                    //     let promediosPregunta= este.resultados[2][i];
-                    //     let numPreguntas= promediosPregunta.length;
-                    //     // console.log(promediosPregunta.length)
-                    //     for (const promedioPregunta of promediosPregunta) {
-                    //         sum= sum + promedioPregunta;
-                    //         // console.log(promedioPregunta)
-                    //     }
-                    //     // console.log('Agregare al array promediosGlobales index #:'+i)
-                    //     este.promediosGlobales[i]= sum/numPreguntas;
-                    //     console.log(sum/numPreguntas)
-                    // }
-
-
-
                 });
             },
             selectedDep: function(dep,event){
@@ -366,8 +382,9 @@
                     containerParent.children[2].classList.toggle('show')
                     this.getData()
                 }else{
-                    let nextPage= containerParent.nextElementSibling;
-                    // console.dir(nextPage)
+                    let nextPage= document.getElementById('tabSurvey');
+
+
                     if(nextPage != null){
                         // SIEMENS
                         nextPage.classList.toggle('show')

@@ -108,6 +108,7 @@
                 // background: green;
 
                 &__surveysContainer{
+                    // position: relative;
                     width: 800px; //IMPURO ORIGINALMENTE ESTO NO ESTABA, TODO ESTABA VACIO
                     &__survey{
                         display: flex;
@@ -255,8 +256,20 @@
 
 
         &.show{
-            left: 0;
+            left: 0 !important;
         }
         // z-index: 1000;
     }
+}
+
+#tabSurvey{
+    z-index: 1000;
+}
+
+#kleenex{
+    position: relative;
+}
+
+#graficas{
+    z-index: 1100;
 }

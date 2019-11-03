@@ -13,3 +13,12 @@ const styles= require('./scss/empresa.scss');
 
 $('select.dropdown').dropdown();
 
+$('.ui.form')
+  .form({
+    fields: {
+        nombre: 'empty',
+        giro: 'empty',
+        proceso: 'empty'
+    }
+  })
+;

@@ -107,8 +107,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="oval"></div>
-                    <div class="oval oval__border"></div>
+                    <!-- <div class="oval"></div>
+                    <div class="oval oval__border"></div> -->
+                    <div class="oval" v-bind:class="{alert:promediosGlobales[acr[0]]<3 || encuestaMenor == promediosGlobales[acr[0]], disabled:acr.length == 0}">
+                        <div class="caja">
+                            <div class="top">
+                                <img src="../img/reload.png" alt="">
+                                <!-- <i class="info circle icon"></i> -->
+                                <i v-if="acr.length > 0" class="info circle icon" @click="nextPage($event,acr[0],acr[1])"></i>
+                            </div>
+                            <div class="bottom">
+                                <h2>Act. de Cambio Rapido</h2>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -141,7 +153,7 @@
                         <p class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__name main__tabSection__titleContainer--surveySection__detailsContainer__detail--media__name" :class="{alert: promediosGlobales[encuestaIdSeleccionado]<=3}">{{promediosGlobales[encuestaIdSeleccionado]}}</p>
                     </div>
 
-                    <button class="ui green button main__tabSection__titleContainer--surveySection__detailsContainer__button" :class="{disabled: promediosGlobales[encuestaIdSeleccionado]>3}">Rectivar Encuesta</button>
+                    <button class="ui green button main__tabSection__titleContainer--surveySection__detailsContainer__button" :class="{disabled: promediosGlobales[encuestaIdSeleccionado]>3}" @click='reactivarEncuesta'>Reactivar Encuesta</button>
                 </div>
 
 
@@ -273,6 +285,26 @@
             saludo(){
                 console.log('Exito')
                 // this.departamentoSeleccionado= dep;
+            },
+            reactivarEncuesta(){
+                console.log('reactivar')
+                let este= this;
+                axios.get(raiz + `api/reactivar/${este.departamentoSeleccionado.id}/${este.encuestaIdSeleccionado}`)
+                .then(function (response) {
+                    // handle success
+                    console.log(response.data==1);
+                    Swal.fire({
+                        type: 'success',
+                        title: 'Encuestas reactivadas',
+                    })
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+                .finally(function () {
+                    // always executed
+                });
             },
             getData:function(){
                 
@@ -455,16 +487,20 @@
 
                     // The data for our dataset
                     data: {
+                            // 229, 76, 56 rojo
+                            // 81, 87, 96 gris
+                            // 103, 193, 111 verde
+                            // 15, 123, 135 azul
                             labels: this.respuestasDePreguntas,
                             datasets: [{
                                 label: 'Pregunta',
                                 backgroundColor: [
-                                    'rgba(255, 99, 132, 0.5)',
-                                    'rgba(54, 162, 235, 0.5)',
-                                    'rgba(255, 206, 86, 0.5)',
-                                    'rgba(75, 192, 192, 0.5)',
-                                    'rgba(153, 102, 255, 0.5)',
-                                    'rgba(255, 159, 64, 0.5)'
+                                    'rgba(81, 87, 96, 0.5)',
+                                    'rgba(15, 123, 135, 0.5)',
+                                    'rgba(81, 87, 96, 0.5)',
+                                    'rgba(15, 123, 135, 0.5)',
+                                    'rgba(81, 87, 96, 0.5)',
+                                    'rgba(15, 123, 135, 0.5)'
                                 ],
                                 // borderColor: 'rgb(255, 99, 132)',
                                 data: arr

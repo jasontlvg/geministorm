@@ -24,7 +24,8 @@ $('.ui.form')
   .form({
     fields: {
         nombre: 'empty',
-        clave: 'empty'
+        giro: 'empty',
+        proceso: 'empty'
     }
   })
 ;

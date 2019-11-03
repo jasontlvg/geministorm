@@ -1,4 +1,5 @@
 @import 'partials/adminLayout';
+@import 'partials/variables';
 
 .section{
     .main{
@@ -16,7 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: tomato;
+    background: $rojo;
     flex-wrap: wrap;
 
     &__survey{
@@ -46,5 +47,23 @@
             }
 
         }
+    }
+}
+
+.ui.horizontal.label{
+    &.green{
+        background-color: $verde !important;
+    }
+
+    &.red{
+        background-color: $rojo !important;
+    }
+}
+
+.ui.positive.right.labeled.icon.button{
+    background-color: $verde !important;
+    // transition: background-color $masterTime;
+    &:hover{
+        background-color: red !important;
     }
 }

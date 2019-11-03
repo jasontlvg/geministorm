@@ -54,7 +54,7 @@
             
             
             &__logo{
-                color:orangered;
+                color:$azul;
                 font-size: 2.5em;
             }
             h1{
@@ -142,7 +142,7 @@
 
             &__logout{
                 &:hover{
-                    background-color: red;
+                    background-color: $rojo;
                 }
             }
 

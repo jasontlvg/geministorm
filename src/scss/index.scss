@@ -33,14 +33,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    // background: red;
     .icon{
         cursor: pointer;
         font-size: 2.5em;
     }
     &--top{
+        // margin: 3em;
     }
-
+    
     &--bottom{
+        // margin: 3em;
     }
 }
 
@@ -154,10 +157,36 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-
+        position: relative;
         .top{
             display: flex;
-            justify-content: center;
+            justify-content: space-around;
+            align-items: center;
+            // position: absolute;
+            // top: 1em;
+            // background: green;
+            img{
+                width: 36%;
+            }
+            i{
+                color: white;
+                font-size: 2.5em;
+                cursor: pointer;
+
+            }
+        }
+
+        .bottom{
+            width: 10em;
+            text-align: center;
+            // background: blue;
+            position: absolute;
+            top: 6.4em;
+            h2{
+                color: white;
+                font-size: 1.3em;
+                font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+            }
         }
 
     }

@@ -49,6 +49,11 @@
                     &__button{
                         position: absolute;
                         right: 0;
+                        background-color: $verde !important;
+                        transition: background-color 0.5s !important;
+                        &:hover{
+                            background-color: rgb(7, 197, 7) !important;
+                        }
                     }
 
                     // background: green;
@@ -65,7 +70,7 @@
 
                         &__name{
                             font-size: 1.3em;
-                            color: #2596BF;
+                            color: $azul;
                         }
                         margin-right: 2em;
 
@@ -75,6 +80,7 @@
                             }
 
                             &__name{
+                                // color: $verde; // AQUI ESTA EL OTRO VERDE FUERTE CHILLON CHIYON
                                 color:green;
                                 &.alert{
                                     color: tomato;

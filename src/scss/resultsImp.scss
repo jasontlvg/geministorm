@@ -1,4 +1,5 @@
 // @import 'partials/adminLayout';
+@import 'partials/variables';
 
 @mixin data-section(){
     display: flex;
@@ -84,7 +85,7 @@
     &__box{
         width: 350px;
         border-radius: 4em;
-        background: #68C16F;
+        background: $verde;
         box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
         overflow: hidden;
         transition: box-shadow 0.5s;
@@ -94,11 +95,11 @@
         }
 
         &.alert{
-            background: tomato;
+            background: $rojo;
         }
 
         &.disabled{
-            background: gray;
+            background: $gris;
             box-shadow: none;
         }
         
@@ -135,21 +136,105 @@
 
 }
 
+// .oval{
+//     width: 600px;
+//     height: 600px;
+//     // background: #E44C37;
+//     background: skyblue;
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%,-50%);
+//     clip-path: ellipse(23% 15% at 50% 50%);
+//     z-index: 100;
+//     &__border{
+//         width: 650px;
+//         height: 650px;
+//         background: #F2F7FA;
+//         z-index: 50;
+//     }
+// }
+
 .oval{
-    width: 600px;
-    height: 600px;
-    // background: #E44C37;
-    background: skyblue;
+    // background: #515760;
+    background: $azul;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    clip-path: ellipse(23% 15% at 50% 50%);
     z-index: 100;
-    &__border{
-        width: 650px;
-        height: 650px;
-        background: #F2F7FA;
-        z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    // Clip
+    // clip-path: ellipse(23% 15% at 50% 50%);
+    // width: 600px;
+    // height: 600px;
+
+    // Border Radius
+    width: 320px;
+    height: 210px;
+    border-radius: 50%;
+    border: 10px solid #F2F7FA;
+
+    &.alert{
+        background: $rojo;
     }
+
+    &.disabled{
+        background: $gris;
+        box-shadow: none;
+    }
+
+    .caja{
+        // background: blue;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        .top{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            // position: absolute;
+            // top: 1em;
+            // background: green;
+            img{
+                width: 36%;
+            }
+            i{
+                color: white;
+                font-size: 2.5em;
+                cursor: pointer;
+
+            }
+        }
+
+        .bottom{
+            width: 10em;
+            text-align: center;
+            // background: blue;
+            position: absolute;
+            top: 6.4em;
+            h2{
+                color: white;
+                font-size: 1.3em;
+                font-family: "Lato", "Helvetica Neue", Arial, Helvetica, sans-serif;
+            }
+        }
+
+    }
+
+    // &__border{
+    //     width: 650px;
+    //     height: 650px;
+    //     background: #F2F7FA;
+    //     z-index: 50;
+    // }
+}
+
+.reloadimg{
+    width: 30%;
 }

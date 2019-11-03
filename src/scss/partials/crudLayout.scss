@@ -1,3 +1,4 @@
+@import 'variables'; // NO GUSTA
 .main__results{
     // background: red;
     width: 100%;
@@ -17,6 +18,7 @@
             // }
             // position: absolute;
             // right: 1.5em;
+            // background: red !important;
 
         }
         @media screen and (min-width: $large) {
@@ -54,9 +56,14 @@
 
             .lolo{
                 // background: red;
+                background-color: $verde;
                 margin: 0;
+                transition: background-color 0.5s;
+                // NO GUSTA!!!!!!
                 // text-align: center !important;
-
+                &:hover{
+                    background-color: rgb(3, 161, 3);
+                }
                 .icon{
                     margin: 0 !important;
                     @media screen and (min-width: $large) {
@@ -101,12 +108,14 @@
                         cursor: pointer;
                         color: $backgroundColor;
                         &--edit{
-                            background: #2185d0;
+                            // background: #2185d0; // NO GUSTA
+                            background: $azul;
                             border-radius: 0.28571429rem;
                         }
 
                         &--delete{
-                            background: tomato;
+                            // background: tomato; // NO GUSTA
+                            background: $rojo;
                             border-radius: 0.28571429rem;
                         }
 
@@ -135,4 +144,21 @@
             }
         }
     }
+}
+
+// NO GUSTA
+.ui.green.submit{
+    background-color: $verde !important;
+}
+
+.ui.red.deny.button{
+    background-color: $rojo !important;
+}
+
+.ui.negative.button{
+    background-color: $rojo !important; 
+}
+
+.ui.positive.right.labeled.icon.button{
+    background-color: $verde !important;
 }

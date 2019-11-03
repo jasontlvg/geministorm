@@ -13,7 +13,8 @@ module.exports = {
         editarEmpleados:'./src/editarEmpleados.js',
         departamentos:'./src/departamentos.js',
         editarDepartamentos:'./src/editarDepartamentos.js',
-        // empresas: './src/empresas.js',
+        empresa: './src/empresa.js',
+        editarEmpresa: './src/editarEmpresa.js',
     },
     output: {
         path: __dirname+'/dist',
@@ -82,7 +83,8 @@ module.exports = {
         new HtmlWebpackPlugin({template: './src/pug/departamentos.pug', filename: 'departamentos.html',minify: false, chunks: ['departamentos']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
         new HtmlWebpackPlugin({template: './src/pug/editarEmpleados.pug', filename: 'editarEmpleados.html',minify: false, chunks: ['editarEmpleados']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
         new HtmlWebpackPlugin({template: './src/pug/editarDepartamentos.pug', filename: 'editarDepartamentos.html',minify: false, chunks: ['editarDepartamentos']}), // 'template' es el lugar de donde toma el archivo a compilar, y 'filename' es como se llamara el archivo compilado
-        // new HtmlWebpackPlugin({template: './src/pug/empresas.pug', filename: 'empresas.html' ,minify: false, chunks: ['empresas']}),
+        new HtmlWebpackPlugin({template: './src/pug/empresa.pug', filename: 'empresa.html' ,minify: false, chunks: ['empresa']}),
+        new HtmlWebpackPlugin({template: './src/pug/editarEmpresa.pug', filename: 'editarEmpresa.html' ,minify: false, chunks: ['editarEmpresa']}),
         new MiniCssExtractPlugin({filename: "css/[name].css", chunkFilename: "[id].css" }), // Borra el 'css/' si quieres que se guarde en la raiz de 
         new webpack.ProvidePlugin({ $: 'jquery' }),
         new webpack.ProvidePlugin({ jQuery: 'jquery' }),

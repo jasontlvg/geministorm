@@ -318,26 +318,43 @@
 
                     let encuestasDisponibles= este.resultados[0];
                     for (const iterator of encuestasDisponibles) {
+                        // console.log(iterator.encuesta_id)
                         let i=iterator.encuesta_id;
                         let sum=0;
                         let promediosPregunta= este.resultados[2][i];
                         let numPreguntas= promediosPregunta.length;
+                        // console.log(promediosPregunta.length)
                         let flag=0;
                         for (const promedioPregunta of promediosPregunta) {
-                            sum= sum + promedioPregunta;
+                            sum= sum + promedioPregunta; // Solito este, ya sirve
+                            // sum= sum + promedioPregunta; // Solito este, ya sirve
+                            // console.log(promedioPregunta)
+
+                            // Nuevo
                             if(promedioPregunta<=3){
                                 flag++;
                             }
                         }
-                        
+                        // console.log(flag)
                         este.flags.push(flag);
                         let x= sum/numPreguntas; // decimal
-                        este.promediosGlobales[i]= parseFloat(x.toFixed(4)); // No borrar, si quieres que en los promedios globales, se agregen por id de encuesta y no seguidas, descomenta esto, y comenta el de abajo, decimal
 
+                        // este.promediosGlobales[i]= (x.toFixed(4)); // No borrar, si quieres que en los promedios globales, se agregen por id de encuesta y no seguidas, descomenta esto, y comenta el de abajo, decimal
+                        este.promediosGlobales[i]= parseFloat(x.toFixed(4)); // No borrar, si quieres que en los promedios globales, se agregen por id de encuesta y no seguidas, descomenta esto, y comenta el de abajo, decimal
+                        
+                        // este.promediosGlobales[i]= sum/numPreguntas; // No borrar, si quieres que en los promedios globales, se agregen por id de encuesta y no seguidas, descomenta esto, y comenta el de abajo
+                        // este.promediosGlobales.push(sum/numPreguntas);
+                        // console.log(sum/numPreguntas)
                     }
+                    // let nana= [1,2,3]
                     este.promediosGlobales[0]=10000000;
                     let caja= este.promediosGlobales;
+                    // console.log(caja)
                     este.encuestaMenor= Math.min(...caja)
+                    // console.log(Math.min(...caja))
+
+                    // Aqui ya obtuvimos los resultados
+                    // console.log(este.resultados[0].length)
                     let ed= este.resultados[0]; // ed = encuestas disponibles
                     for(let i=0; i<ed.length; i++){
                         // console.log(ed[i].encuesta.nombre)

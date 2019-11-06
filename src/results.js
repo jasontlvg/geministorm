@@ -35,9 +35,6 @@ window.axios = require('axios');
 import Vue from 'vue';
 import App from './components/Results.vue';
 
-// export const EventBus = new Vue();
-// Vue.component('ninja', require('./components/Encuestas.vue').default);
-
 new Vue({
     render: h => h(App)
 }).$mount('#main');

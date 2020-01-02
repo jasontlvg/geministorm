@@ -12,6 +12,18 @@
             <button class="ui right labeled icon button disabled main__button" id="nextMain" @click="nextPage">
                 <i class="right arrow icon"></i>Siguiente
             </button>
+
+            <!-- <div class="ui icon button" data-tooltip="Add users to your feed" data-inverted="">
+                <i class="add icon"></i>
+            </div>
+            <div class="ui icon" data-tooltip="Add users to your feed" data-inverted="">
+                <p>hola</p>
+            </div>
+            <div class="ui button" data-inverted="" data-tooltip="Add users to your feed" data-position="top left">Top Left</div> -->
+            
+            <div class="ui icon button" data-content="Add users to your feed">
+                <i class="add icon"></i>
+            </div>
         </div>
 
 
@@ -56,6 +68,8 @@
                             <div class="positioner__box__leftColumn__leftSide">
                                 <i class="clipboard list icon"></i>
                                 <h2 class="up">Practica</h2>
+                                <p class="info info__media">La media es: {{promediosGlobales[practica[0]]}}</p>
+                                <p class="info info__indicador">Indicadores: {{flags[practica[1]]}}</p>
                             </div>
                             <div class="positioner__box__leftColumn__rightSide positioner__box__leftColumn__rightSide--top">
                                 <!-- <i class="info circle icon" @click="nextPage($event,practica[0],practica[1])"></i> -->
@@ -75,6 +89,8 @@
                             <div class="positioner__box__rightColumn__rightSide positioner__box__leftColumn__rightSide--top">
                                 <i class="cog icon"></i>
                                 <h2>Procesos</h2>
+                                <p class="info info__media">La media es: {{promediosGlobales[procesos[0]]}}</p>
+                                <p class="info info__indicador">Indicadores: {{flags[procesos[1]]}}</p>
                             </div>
 
                         </div>
@@ -86,6 +102,8 @@
                             <div class="positioner__box__leftColumn__leftSide">
                                 <h2 class="down">Personas</h2>
                                 <i class="users icon"></i>
+                                <p class="info info__media">La media es: {{promediosGlobales[personas[0]]}}</p>
+                                <p class="info info__indicador">Indicadores: {{flags[personas[1]]}}</p>
                             </div>
                             <div class="positioner__box__leftColumn__rightSide positioner__box__leftColumn__rightSide--bottom">
                                 <!-- <i class="info circle icon"></i> -->
@@ -104,6 +122,8 @@
                             <div class="positioner__box__rightColumn__rightSide positioner__box__leftColumn__rightSide--bottom">
                                 <h2 class="down">Producto</h2>
                                 <i class="box icon"></i>
+                                <p class="info info__media">La media es: {{promediosGlobales[producto[0]]}}</p>
+                                <p class="info info__indicador">Indicadores: {{flags[producto[1]]}}</p>
                             </div>
                         </div>
                     </div>
@@ -118,6 +138,8 @@
                             </div>
                             <div class="bottom">
                                 <h2>Act. de Cambio Rapido</h2>
+                                <p class="info info__media">La media es: {{promediosGlobales[acr[0]]}}</p>
+                                <p class="info info__indicador">Indicadores: {{flags[acr[1]]}}</p>
                             </div>
                         </div>
                     </div>
@@ -177,8 +199,10 @@
                         </tr>
                     </thead>
                     <tbody class="main__tabSection__body main__tabSection__body--surveySection__table__tbody">
-                        <tr v-for="(x,index) in preguntasEncuestaSeleccionado" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr">
-                            <td data-label="Name" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td">{{(index+1)+ '. ' +x.pregunta}}</td>
+                        <!-- <tr v-for="(x,index) in preguntasEncuestaSeleccionado" :class="{coco:true}" :key="x.pregunta" data-content="El tiempo dedicado al desmontaje es elevado, se requiere tomar acciones de mejora para reducirlos." data-variation="very wide"> -->
+                        <!-- <tr @mouseover="showOver" v-for="(x,index) in preguntasEncuestaSeleccionado" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr colorante" :key="x[0]" data-content="Add users to your feed"> -->
+                        <tr v-for="(x,index) in preguntasEncuestaSeleccionado" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr" :key="x[0]">
+                            <td :data-tooltip="lolo[0]" data-label="Name" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td" >{{(index+1)+ '. ' +x.pregunta}}</td>
                             <!-- Ignorar el de abajo -->
                             <!-- <td data-label="Age">{{promediosGlobales[encuestaIdSeleccionado]}}</td> -->
                             
@@ -193,7 +217,7 @@
 
                             <!-- <td data-label="Job">{{respuestasEncuestaSeleccionada[index]}}</td> -->
                             <!-- <td data-label="Job" @click="modal(respuestasEncuestaSeleccionada[index])">{{respuestasEncuestaSeleccionada[index]}}</td> -->
-                            <td data-label="Details" @click="modal(respuestasEncuestaSeleccionada[index],((index+1) + '. ' +x.pregunta))" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td--details"><i class="fas fa-info-circle"></i></td>
+                            <td data-label="Details" @click="modal(respuestasEncuestaSeleccionada[index],((index+1) + '. ' +x.pregunta))" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td--details" ><i class="fas fa-info-circle"></i></td>
                             
                         </tr>
                     </tbody>
@@ -247,10 +271,12 @@
                 procesos: [],
                 personas: [],
                 producto: [],
-                acr: []
+                acr: [],
+                lolo: ['uno', 'dos']
             }
         },
         created: function(){
+            // $('.coco').popup({});
             let este=this;
             axios.get(raiz+'api/results')
             .then( ({data}) => {
@@ -279,6 +305,8 @@
             .finally(function () {
                 // always executed
             });
+
+            $('.colorante').popup('show');
         }
         ,
         methods: {
@@ -342,8 +370,10 @@
                     for(let i=0; i<ed.length; i++){
                         // console.log(ed[i].encuesta.nombre)
                         if(ed[i].encuesta.nombre == 'Personas'){ // if(ed[i].encuesta.nombre == 'Personas'){
-                            este.personas.push(ed[i].encuesta_id)
-                            este.personas.push(i)
+                            este.personas.push(ed[i].encuesta_id) // el index 0 corresponde al id en la base de datos
+                            este.personas.push(i) // el index 1 corresponde al numero    de iteracion en lo que lo encontro
+                                                  // recuerda que esto nos sirve para utilizar los datos que vienen de laravel, porque ahi el index es el mismo para todos
+
                         }
 
                         if(ed[i].encuesta.nombre == 'Producto'){
@@ -406,24 +436,19 @@
                         // console.dir(nextPage.classList.toggle('show'))
                         // console.log(encuestaId)
                         if(encuestaId != undefined){
+
                             // console.log(encuestaId)
                             this.encuestaIdSeleccionado= encuestaId;
                             
                             axios.get(raiz + `api/results/encuesta/preguntas/${encuestaId}`)
                             .then(function (response) {
-                                // handle success
-                                // console.log(response.data);
+                                // Este apartado obtiene las preguntas de la encuesta seleccionada
+                                
                                 este.preguntasEncuestaSeleccionado= response.data;
-                                // AQUI
-                                // console.log(index)
-                                // este.encuestaSeleccionada= este.resultados[1][index];
-                                // console.log(este.encuestaSeleccionada= este.resultados[0][index])
                                 este.encuestaSeleccionada= este.resultados[0][index].encuesta;
-                                // TECLADO
                                 este.respuestasEncuestaSeleccionada= este.resultados[1][encuestaId]
-                                // console.log(este.resultados[2][encuestaId])
                                 este.promedioDePreguntasDeEncuestaSeleccionada= este.resultados[2][encuestaId];
-
+                                        
                             })
                             .catch(function (error) {
                                 // handle error
@@ -511,54 +536,12 @@
                         }
                     }
                 });
-
-
-
-
-                // if(window.myChart != undefined){
-                //     console.log('Destruyendo')
-                //     window.myChart.destroy()
-                // }else{
-                //     console.log('No destruyendo')
-                // }
-                // window.ctx = document.getElementById('myChart');
-                // window.myChart = new Chart(ctx, {
-                //     type: 'pie',
-                //     data: {
-                //         labels: this.respuestasDePreguntas,
-                //         datasets: [{
-                //             label: '# of Votes',
-                //             data: arr,
-                //             backgroundColor: [
-                //                 'rgba(255, 99, 132, 0.2)',
-                //                 'rgba(54, 162, 235, 0.2)',
-                //                 'rgba(255, 206, 86, 0.2)',
-                //                 'rgba(75, 192, 192, 0.2)',
-                //                 'rgba(153, 102, 255, 0.2)',
-                //                 'rgba(255, 159, 64, 0.2)'
-                //             ],
-                //             borderColor: [
-                //                 'rgba(255, 99, 132, 1)',
-                //                 'rgba(54, 162, 235, 1)',
-                //                 'rgba(255, 206, 86, 1)',
-                //                 'rgba(75, 192, 192, 1)',
-                //                 'rgba(153, 102, 255, 1)',
-                //                 'rgba(255, 159, 64, 1)'
-                //             ],
-                //             borderWidth: 1
-                //         }]
-                //     },
-                    // options: {
-                    //     scales: {
-                    //         yAxes: [{
-                    //             ticks: {
-                    //                 beginAtZero: true
-                    //             }
-                    //         }]
-                    //     }
-                    // }
-                // });
+            },
+            showOver: function(event){
+                console.dir(event)
             }
+
+            
         }
     }
 

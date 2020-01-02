@@ -26,6 +26,18 @@
         font-size: 4em;
         color: white;
     }
+
+    .info{
+        color: white;
+        padding: 0;
+        margin: 0;
+        &__media{
+        }
+        &__indicador{
+        }
+
+    }
+
 }
 
 @mixin info-section(){

@@ -66,6 +66,9 @@
                 // display: none;
                 // padding-left: 0;
             }
+            &__title{
+                color: $azul;
+            }
         }
 
         @media screen and (min-width: $large) {

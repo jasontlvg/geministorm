@@ -16,6 +16,7 @@ module.exports = {
         empresa: './src/empresa.js',
         editarEmpresa: './src/editarEmpresa.js',
         welcome: './src/welcome.js',
+        login: './src/login.js',
     },
     output: {
         path: __dirname+'/dist',
@@ -87,6 +88,7 @@ module.exports = {
         new HtmlWebpackPlugin({template: './src/pug/empresa.pug', filename: 'empresa.html' ,minify: false, chunks: ['empresa']}),
         new HtmlWebpackPlugin({template: './src/pug/editarEmpresa.pug', filename: 'editarEmpresa.html' ,minify: false, chunks: ['editarEmpresa']}),
         new HtmlWebpackPlugin({template: './src/pug/welcome.pug', filename: 'welcome.html' ,minify: false, chunks: ['welcome']}),
+        new HtmlWebpackPlugin({template: './src/pug/login.pug', filename: 'login.html' ,minify: false, chunks: ['login']}),
         new MiniCssExtractPlugin({filename: "css/[name].css", chunkFilename: "[id].css" }), // Borra el 'css/' si quieres que se guarde en la raiz de 
         new webpack.ProvidePlugin({ $: 'jquery' }),
         new webpack.ProvidePlugin({ jQuery: 'jquery' }),

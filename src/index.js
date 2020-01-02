@@ -10,3 +10,4 @@ al.master();
 
 // Files de la Pagina
 const styles= require('./scss/index.scss');
+$('.cap').popup();

@@ -47,10 +47,11 @@
                 &__detailsContainer{
 
                     &__button{
-                        position: absolute;
-                        right: 0;
+                        // position: absolute;
+                        // right: 0;
                         background-color: $verde !important;
                         transition: background-color 0.5s !important;
+                        margin-right: 0;
                         &:hover{
                             background-color: rgb(7, 197, 7) !important;
                         }
@@ -63,6 +64,10 @@
                     display: flex;
                     flex-wrap: wrap;
                     &__detail{
+                        display: flex;
+                        flex-wrap: wrap;
+                        flex-direction: column;
+                        justify-content: center;
                         &__title{
                             margin: 0;
                             font-size: 1em;

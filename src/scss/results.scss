@@ -67,3 +67,22 @@
         background-color: red !important;
     }
 }
+
+.boxHeader{
+    width: 50%;
+    display: flex;
+
+    &__two{
+        justify-content: flex-end;
+        // background: red;
+        padding: 0.78571429em 1.5em 0.78571429em;
+        padding-right: 0;
+        
+    }
+
+}
+
+.botonDescargar{
+    background-color: $azul !important;
+    color: white !important;
+}

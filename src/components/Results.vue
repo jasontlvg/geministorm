@@ -21,9 +21,9 @@
             </div>
             <div class="ui button" data-inverted="" data-tooltip="Add users to your feed" data-position="top left">Top Left</div> -->
             
-            <div class="ui icon button" data-content="Add users to your feed">
+            <!-- <div class="ui icon button" data-content="Add users to your feed">
                 <i class="add icon"></i>
-            </div>
+            </div> -->
         </div>
 
 
@@ -142,6 +142,10 @@
                                 <p class="info info__indicador">Indicadores: {{flags[acr[1]]}}</p>
                             </div>
                         </div>
+
+                        <!-- <div class="oval__d1">
+                            <p>Hola Mundo</p>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -158,24 +162,45 @@
                 <div class="main__tabSection__titleContainer--surveySection__detailsContainer">
 
                     <!-- <h3 class="">Encuesta {{encuestaSeleccionada.nombre}}</h3> -->
-                    <!-- <div class="lolo">
+                    <!-- <div class="lolo"></div> -->
+
+                    <div class="boxHeader boxHeader__one">
+
+                        <div class="main__tabSection__titleContainer--surveySection__detailsContainer__detail">
+                            <h3 class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__title">Departamento</h3>
+                            <p class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__name">{{departamentoSeleccionado.nombre}}</p>
+                        </div>
+                        <div class="main__tabSection__titleContainer--surveySection__detailsContainer__detail">
+                            <h3 class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__title">Encuesta</h3>
+                            <p class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__name">{{encuestaSeleccionada.nombre}}</p>
+                        </div>
+                        <div class="main__tabSection__titleContainer--surveySection__detailsContainer__detail main__tabSection__titleContainer--surveySection__detailsContainer__detail--media">
+                            <h3 class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__title main__tabSection__titleContainer--surveySection__detailsContainer__detail--media__title">Media</h3>
+                            <p class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__name main__tabSection__titleContainer--surveySection__detailsContainer__detail--media__name" :class="{alert: promediosGlobales[encuestaIdSeleccionado]<=3}">{{promediosGlobales[encuestaIdSeleccionado]}}</p>
+                        </div>
+
+                    </div>
+
+                    <div class="boxHeader boxHeader__two">
+
+                        <form action="http://geministorm.com/admin/resultados/reporte" method="get">
+                            <div class="invisible">
+                                <input v-for="dep in promedioDePreguntasDeEncuestaSeleccionada" type="text" name="pi[]" id="" :value="dep">
+                                <input type="text" name="departamento" :value="departamentoSeleccionado.nombre">
+                                <input type="text" name="encuesta_id" :value="encuestaIdSeleccionado">
+                                <input type="text" name="encuesta" :value="encuestaSeleccionada.nombre">
+                                <input type="text" name="media" :value="promediosGlobales[encuestaIdSeleccionado]">
+                                
+                            </div>
+                            <button class="ui button botonDescargar" type="submit">Descargar reporte</button>
+                        </form>
+
+
+                        <button class="ui green button main__tabSection__titleContainer--surveySection__detailsContainer__button" :class="{disabled: promediosGlobales[encuestaIdSeleccionado]>3}" @click='reactivarEncuesta'>Reactivar Encuesta</button>
 
                         
-                    </div> -->
-                    <div class="main__tabSection__titleContainer--surveySection__detailsContainer__detail">
-                        <h3 class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__title">Departamento</h3>
-                        <p class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__name">{{departamentoSeleccionado.nombre}}</p>
-                    </div>
-                    <div class="main__tabSection__titleContainer--surveySection__detailsContainer__detail">
-                        <h3 class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__title">Encuesta</h3>
-                        <p class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__name">{{encuestaSeleccionada.nombre}}</p>
-                    </div>
-                    <div class="main__tabSection__titleContainer--surveySection__detailsContainer__detail main__tabSection__titleContainer--surveySection__detailsContainer__detail--media">
-                        <h3 class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__title main__tabSection__titleContainer--surveySection__detailsContainer__detail--media__title">Media</h3>
-                        <p class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__name main__tabSection__titleContainer--surveySection__detailsContainer__detail--media__name" :class="{alert: promediosGlobales[encuestaIdSeleccionado]<=3}">{{promediosGlobales[encuestaIdSeleccionado]}}</p>
                     </div>
 
-                    <button class="ui green button main__tabSection__titleContainer--surveySection__detailsContainer__button" :class="{disabled: promediosGlobales[encuestaIdSeleccionado]>3}" @click='reactivarEncuesta'>Reactivar Encuesta</button>
                 </div>
 
 
@@ -199,18 +224,16 @@
                         </tr>
                     </thead>
                     <tbody class="main__tabSection__body main__tabSection__body--surveySection__table__tbody">
-                        <!-- <tr v-for="(x,index) in preguntasEncuestaSeleccionado" :class="{coco:true}" :key="x.pregunta" data-content="El tiempo dedicado al desmontaje es elevado, se requiere tomar acciones de mejora para reducirlos." data-variation="very wide"> -->
-                        <!-- <tr @mouseover="showOver" v-for="(x,index) in preguntasEncuestaSeleccionado" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr colorante" :key="x[0]" data-content="Add users to your feed"> -->
                         <tr v-for="(x,index) in preguntasEncuestaSeleccionado" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr" :key="x[0]">
-                            <td :data-tooltip="lolo[0]" data-label="Name" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td" >{{(index+1)+ '. ' +x.pregunta}}</td>
+                            <!-- <td :data-tooltip="lolo[0]" data-label="Name" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td" >{{(index+1)+ '. ' +x.pregunta}}</td> -->
+                            <td v-if="promedioDePreguntasDeEncuestaSeleccionada[index]>3" data-label="Name" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td" >{{(index+1)+ '. ' +x.pregunta}}</td>
+                            <td v-else :data-tooltip="indicadores[index].indicador" data-inverted="" data-label="Name" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td" >{{(index+1)+ '. ' +x.pregunta}}</td>                       
                             <!-- Ignorar el de abajo -->
-                            <!-- <td data-label="Age">{{promediosGlobales[encuestaIdSeleccionado]}}</td> -->
                             
                             <!-- <td data-label="Age">{{promedioDePreguntasDeEncuestaSeleccionada[index]}}</td> -->
                             <td data-label="Media" style="text-align:center" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td">
                                 <a class="item">
                                     <div class="ui horizontal label" :class="{green: promedioDePreguntasDeEncuestaSeleccionada[index]>3, red:promedioDePreguntasDeEncuestaSeleccionada[index]<=3}" >{{promedioDePreguntasDeEncuestaSeleccionada[index]}}</div>
-                                    <!-- Kumquats -->
                                 </a>
                                 <!-- {{promedioDePreguntasDeEncuestaSeleccionada[index]}} -->
                             </td>
@@ -221,6 +244,8 @@
                             
                         </tr>
                     </tbody>
+
+                    
                 </table>
 
 
@@ -242,6 +267,18 @@
                 </div>
 
             </div>
+
+            <!-- <form action="http://geministorm.com/admin/resultados/reporte" method="get">
+                <div class="invisible">
+                    <input v-for="dep in promedioDePreguntasDeEncuestaSeleccionada" type="text" name="pi[]" id="" :value="dep">
+                    <input type="text" name="departamento" :value="departamentoSeleccionado.nombre">
+                    <input type="text" name="encuesta_id" :value="encuestaIdSeleccionado">
+                    <input type="text" name="encuesta" :value="encuestaSeleccionada.nombre">
+                    <input type="text" name="media" :value="promediosGlobales[encuestaIdSeleccionado]">
+                    
+                </div>
+                <button type="submit">Descargar reporte</button>
+            </form> -->
 
         </section>
         
@@ -272,6 +309,8 @@
                 personas: [],
                 producto: [],
                 acr: [],
+                indicadores: [],
+                // promediosIndividualesDeEncuestaSeleccionada: [],
                 lolo: ['uno', 'dos']
             }
         },
@@ -395,6 +434,8 @@
                             este.practica.push(ed[i].encuesta_id)
                             este.practica.push(i)
                         }
+
+                        
                     }
 
                 })
@@ -439,6 +480,27 @@
 
                             // console.log(encuestaId)
                             this.encuestaIdSeleccionado= encuestaId;
+
+                            // obtenemos los promedios de cada pregunta de la encuesta seleccionada
+                            // let s=-1;
+                            // if(este.personas[0] == este.encuestaIdSeleccionado){
+                            //     s= este.personas[1];
+                            // }else if(este.producto[0] == este.encuestaIdSeleccionado){
+                            //     s= este.producto[1];
+                            // }else if(este.acr[0] == este.encuestaIdSeleccionado){
+                            //     s= este.acr[1];
+                            // }else if(este.procesos[0] == este.encuestaIdSeleccionado){
+                            //     s= este.procesos[1];
+                            // }else{
+                            //     s= este.practica[1];
+                            // }
+                            // s= s+1;
+
+                            // este.promediosIndividualesDeEncuestaSeleccionada= este.resultados[2][s];
+                            // console.dir(este.resultados[2][s])
+
+
+
                             
                             axios.get(raiz + `api/results/encuesta/preguntas/${encuestaId}`)
                             .then(function (response) {
@@ -448,6 +510,8 @@
                                 este.encuestaSeleccionada= este.resultados[0][index].encuesta;
                                 este.respuestasEncuestaSeleccionada= este.resultados[1][encuestaId]
                                 este.promedioDePreguntasDeEncuestaSeleccionada= este.resultados[2][encuestaId];
+
+                                
                                         
                             })
                             .catch(function (error) {
@@ -458,7 +522,19 @@
                                 // always executed
                             });
 
-                            // console.log(this.resultados[1][encuestaId])
+                            // Obtenemos los indicadores de la encuesta seleccionada
+                            axios.get(raiz + `api/indicadores/${este.encuestaIdSeleccionado}`)
+                            .then(function (response) {
+                                console.dir(response)
+                                este.indicadores= response.data;
+                            })
+                            .catch(function (error) {
+                                // handle error
+                                console.log(error);
+                            })
+                            .finally(function () {
+                                // always executed
+                            });
                         }
 
                         
@@ -624,6 +700,10 @@
             // background-color: orangered;
             display: none;
         }
+    }
+
+    .invisible{
+        display: none;
     }
 
     @import '../scss/partials/tabSection.scss';

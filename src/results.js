@@ -17,17 +17,18 @@ const styles= require('./scss/results.scss');
 
 // Axios -- Comenta el codigo especial si vas a trabajas desde VSC, descomentalo cuando lo pases al server
 
-// window.raiz='./';
-window.raiz='http://geministorm.com/admin/';
+window.raiz='./';
+// window.raiz='http://geministorm.com/admin/';
 
 window.axios = require('axios');
-// window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-// let token = document.head.querySelector('meta[name="csrf-token"]');
-// if (token) {
-//     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-// } else {
-//     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-// }
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+let token = document.head.querySelector('meta[name="csrf-token"]');
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
 
 
 // Vue

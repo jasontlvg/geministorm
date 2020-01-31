@@ -64,8 +64,7 @@
                     <!-- pollo -->
                     <div class="positioner positioner--top">
                         <!-- Practica -->
-                        <!-- <div class="positioner__box positioner__box__leftColumn" v-bind:class="{alert:promediosGlobales[practica[0]]<3 || encuestaMenor == promediosGlobales[practica[0]], disabled:practica.length == 0}"> -->
-                        <div class="positioner__box positioner__box__leftColumn" v-bind:class="{verde: promediosGlobales[practica[0]]>2.9999 && flags[practica[1]]==0,rojo: promediosGlobales[practica[0]] == encuestaMenor, amarillo: practica[3] == 1, amarillo: flags[practica[1]] == indicadorMasAlto}">
+                        <div class="positioner__box positioner__box__leftColumn" v-bind:class="{alert:promediosGlobales[practica[0]]<3 || encuestaMenor == promediosGlobales[practica[0]], disabled:practica.length == 0}">
                             <div class="positioner__box__leftColumn__leftSide">
                                 <i class="clipboard list icon"></i>
                                 <h2 class="up">Practica</h2>
@@ -81,14 +80,13 @@
                         </div>
 
                         <!-- Procesos -->
-                        <div class="positioner__box positioner__box__rightColumn" v-bind:class="{verde: promediosGlobales[procesos[0]]>2.9999 && flags[procesos[1]]==0,rojo: promediosGlobales[procesos[0]] == encuestaMenor, amarillo: procesos[3] == 1, amarillo: flags[procesos[1]] == indicadorMasAlto}">
+                        <div class="positioner__box positioner__box__rightColumn" v-bind:class="{alert:promediosGlobales[procesos[0]]<3 || encuestaMenor == promediosGlobales[procesos[0]], disabled:procesos.length == 0}">
                             <div class="positioner__box__rightColumn__leftSide">
                                 <!-- <i class="info circle icon"></i> -->
                                 <i v-if="procesos.length > 0" class="info circle icon" @click="nextPage($event,procesos[0],procesos[1])"></i>
                                 <!-- <i v-else class="info circle icon" @click="nextPage($event,procesos[0],procesos[1])"></i> -->
                             </div>
                             <div class="positioner__box__rightColumn__rightSide positioner__box__leftColumn__rightSide--top">
-                                
                                 <i class="cog icon"></i>
                                 <h2>Procesos</h2>
                                 <p class="info info__media">La media es: {{promediosGlobales[procesos[0]]}}</p>
@@ -100,8 +98,7 @@
 
                     <div class="positioner positioner--bottom">
                         <!-- Personas -->
-                        <!-- <div class="positioner__box positioner__box__leftColumn" v-bind:class="{alert:promediosGlobales[personas[0]]<3 || encuestaMenor == promediosGlobales[personas[0]], disabled:personas.length == 0}"> -->
-                        <div class="positioner__box positioner__box__leftColumn" v-bind:class="{verde: promediosGlobales[personas[0]]>2.9999 && flags[personas[1]]==0,rojo: promediosGlobales[personas[0]] == encuestaMenor, amarillo: personas[3] == 1, amarillo: flags[personas[1]] == indicadorMasAlto}">
+                        <div class="positioner__box positioner__box__leftColumn" v-bind:class="{alert:promediosGlobales[personas[0]]<3 || encuestaMenor == promediosGlobales[personas[0]], disabled:personas.length == 0}">
                             <div class="positioner__box__leftColumn__leftSide">
                                 <h2 class="down">Personas</h2>
                                 <i class="users icon"></i>
@@ -116,7 +113,7 @@
                         </div>
 
                         <!-- Producto -->
-                        <div class="positioner__box positioner__box__rightColumn" v-bind:class="{verde: promediosGlobales[producto[0]]>2.9999 && flags[producto[1]]==0,rojo: promediosGlobales[producto[0]] == encuestaMenor, amarillo: producto[3] == 1, amarillo: flags[producto[1]] == indicadorMasAlto}">
+                        <div class="positioner__box positioner__box__rightColumn" v-bind:class="{alert:promediosGlobales[producto[0]]<3 || encuestaMenor == promediosGlobales[producto[0]], disabled:producto.length == 0}">
                             <div class="positioner__box__rightColumn__leftSide">
                                 <!-- <i class="info circle icon"></i> -->
                                 <!-- <i class="info circle icon" @click="nextPage($event,producto[0],producto[1])"></i> -->
@@ -132,56 +129,24 @@
                     </div>
                     <!-- <div class="oval"></div>
                     <div class="oval oval__border"></div> -->
-                    <div class="oval" v-bind:class="{verde: promediosGlobales[acr[0]]>2.9999 && flags[acr[1]]==0,rojo: promediosGlobales[acr[0]] == encuestaMenor, amarillo: acr[3] == 1, amarillo: flags[acr[1]] == indicadorMasAlto}">
+                    <div class="oval" v-bind:class="{alert:promediosGlobales[acr[0]]<3 || encuestaMenor == promediosGlobales[acr[0]], disabled:acr.length == 0}">
                         <div class="caja">
-                            <div class="bottom">
-                                <h2>Act. de Cambio Rapido</h2>
-                            </div>
                             <div class="top">
                                 <img src="../img/reload.png" alt="">
+                                <!-- <i class="info circle icon"></i> -->
                                 <i v-if="acr.length > 0" class="info circle icon" @click="nextPage($event,acr[0],acr[1])"></i>
                             </div>
-                            
-                        </div>
-
-                        <div class="infobox">
-                            <p class="infobox__info infobox__media">La media es: {{promediosGlobales[acr[0]]}}</p>
-                            <p class="infobox__info infobox__indicador">Indicadores: {{flags[acr[1]]}}</p>
+                            <div class="bottom">
+                                <h2>Act. de Cambio Rapido</h2>
+                                <p class="info info__media">La media es: {{promediosGlobales[acr[0]]}}</p>
+                                <p class="info info__indicador">Indicadores: {{flags[acr[1]]}}</p>
+                            </div>
                         </div>
 
                         <!-- <div class="oval__d1">
                             <p>Hola Mundo</p>
                         </div> -->
                     </div>
-                </div>
-                <div class="main__tabSection__body--surveysSection__surveysColorLegend">
-
-                    <div class="main__tabSection__body--surveysSection__surveysColorLegend__block">
-
-                        <div class="main__tabSection__body--surveysSection__surveysColorLegend__block__des">
-                            <div class="color-bg color-bg--rojo"></div>
-                            <p class="description">Rojo: Factor con media mas baja</p>
-                        </div>
-
-                        <div class="main__tabSection__body--surveysSection__surveysColorLegend__block__des">
-                            <div class="color-bg color-bg--amarillo"></div>
-                            <p class="description">Amarillo: Factor con indicador mas alto</p>
-                        </div>
-
-                    </div>
-
-                    <div class="main__tabSection__body--surveysSection__surveysColorLegend__block main__tabSection__body--surveysSection__surveysColorLegend__block--2">
-                        <div class="main__tabSection__body--surveysSection__surveysColorLegend__block__des">
-                            <div class="color-bg color-bg--verde"></div>
-                            <p class="description">Verde: Media mayor a 3 e indicadores en 0</p>
-                        </div>
-
-                        <div class="main__tabSection__body--surveysSection__surveysColorLegend__block__des">
-                            <div class="color-bg color-bg--azul"></div>
-                            <p class="description">Azul: Indicador mayor a 0 pero menor que amarillo</p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
@@ -218,8 +183,7 @@
 
                     <div class="boxHeader boxHeader__two">
 
-                        <form action="./resultados/reporte" method="get">
-                        <!-- <form action="http://geministorm.com/admin/resultados/reporte" method="get"> -->
+                        <form action="http://geministorm.com/admin/resultados/reporte" method="get">
                             <div class="invisible">
                                 <input v-for="dep in promedioDePreguntasDeEncuestaSeleccionada" type="text" name="pi[]" id="" :value="dep">
                                 <input type="text" name="departamento" :value="departamentoSeleccionado.nombre">
@@ -269,7 +233,7 @@
                             <!-- <td data-label="Age">{{promedioDePreguntasDeEncuestaSeleccionada[index]}}</td> -->
                             <td data-label="Media" style="text-align:center" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td">
                                 <a class="item">
-                                    <div class="ui horizontal label" :class="{green: promedioDePreguntasDeEncuestaSeleccionada[index]>2.9999, red:promedioDePreguntasDeEncuestaSeleccionada[index]<=2.9999}" >{{promedioDePreguntasDeEncuestaSeleccionada[index]}}</div>
+                                    <div class="ui horizontal label" :class="{green: promedioDePreguntasDeEncuestaSeleccionada[index]>3, red:promedioDePreguntasDeEncuestaSeleccionada[index]<=3}" >{{promedioDePreguntasDeEncuestaSeleccionada[index]}}</div>
                                 </a>
                                 <!-- {{promedioDePreguntasDeEncuestaSeleccionada[index]}} -->
                             </td>
@@ -345,10 +309,9 @@
                 personas: [],
                 producto: [],
                 acr: [],
-                indicadores: ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',],
+                indicadores: [],
                 // promediosIndividualesDeEncuestaSeleccionada: [],
-                lolo: ['uno', 'dos'],
-                indicadorMasAlto: -10,
+                lolo: ['uno', 'dos']
             }
         },
         created: function(){
@@ -411,14 +374,13 @@
                 });
             },
             getData:function(){
+                
                 let este= this;
-                console.log(raiz + `api/getdata/${este.departamentoSeleccionado.id}`)
                 axios.get(raiz + `api/getdata/${este.departamentoSeleccionado.id}`)
                 .then(function (response) {
                     // handle success
                     // console.log(response.data);
                     //Aqui obtenemos los resultados, ya nos retornan los resultados, y los resultados filtrados (ademas de las encuestas disponibles)
-                    console.dir(response)
                     este.resultados= response.data;
 
                     let encuestasDisponibles= este.resultados[0];
@@ -430,7 +392,7 @@
                         let flag=0;
                         for (const promedioPregunta of promediosPregunta) {
                             sum= sum + promedioPregunta;
-                            if(promedioPregunta<=2.9999){
+                            if(promedioPregunta<=3){
                                 flag++;
                             }
                         }
@@ -448,7 +410,7 @@
                         // console.log(ed[i].encuesta.nombre)
                         if(ed[i].encuesta.nombre == 'Personas'){ // if(ed[i].encuesta.nombre == 'Personas'){
                             este.personas.push(ed[i].encuesta_id) // el index 0 corresponde al id en la base de datos
-                            este.personas.push(i) // el index 1 corresponde al numero de iteracion en lo que lo encontro
+                            este.personas.push(i) // el index 1 corresponde al numero    de iteracion en lo que lo encontro
                                                   // recuerda que esto nos sirve para utilizar los datos que vienen de laravel, porque ahi el index es el mismo para todos
 
                         }
@@ -456,49 +418,30 @@
                         if(ed[i].encuesta.nombre == 'Producto'){
                             este.producto.push(ed[i].encuesta_id)
                             este.producto.push(i)
-
-                            este.producto.push(0)
-                            este.producto.push(0)
                         }
 
                         if(ed[i].encuesta.nombre == 'Act. Cambio Rápido'){
                             este.acr.push(ed[i].encuesta_id)
                             este.acr.push(i)
-
-                            este.acr.push(0)
-                            este.acr.push(0)
                         }
 
                         if(ed[i].encuesta.nombre == 'Procesos'){
                             este.procesos.push(ed[i].encuesta_id)
                             este.procesos.push(i)
-
-                            este.procesos.push(0)
-                            este.procesos.push(0)
                         }
 
                         if(ed[i].encuesta.nombre == 'Practica'){
                             este.practica.push(ed[i].encuesta_id)
                             este.practica.push(i)
-
-                            este.practica.push(0)
-                            este.practica.push(0)
                         }
+
+                        
                     }
-
-                    // este.personas (index 2 es rojo, index 3 es amarillo)
-                    // console.log(Math.min(...este.flags))
-                    este.indicadorMasAlto= Math.max(...este.flags);
-
-
-
-
 
                 })
                 .catch(function (error) {
                     // handle error
                     console.log(error);
-                    // console.log('tecladoss1')
                 })
                 .finally(function () {
                     // always executed
@@ -604,7 +547,6 @@
                 if(v == 'last'){
                     let section= document.getElementById('tabSurvey');
                     section.classList.toggle('show')
-                    este.indicadores= ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',];
                     
                 }
             },

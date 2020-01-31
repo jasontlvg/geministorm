@@ -1,65 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Login V1</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="images/img-01.png" alt="IMG">
-				</div>
-
-				<form class="login100-form validate-form">
-					<span class="login100-form-title">
-						Member Login
-					</span>
-
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-					
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>
-
-					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="#">
-							Username / Password?
-						</a>
-					</div>
-
-					<div class="text-center p-t-136">
-						<a class="txt2" href="#">
-							Create your Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-
-</body>
-</html>
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible", content="ie=edge")
+		title Bienvenido
+		<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"> 
+	body
+		.containerGrid
+			section.welcome
+				.welcome__titles
+					.logoContainer
+						h1.logoContainer__title 4P'S
+					h2.welcome__titles__h ChangeOvers
+			section.login
+				.login__header
+					h2 Inicio de sesión
+				form.ui.form.login__form(action="/dsad")
+					.field
+						label Correo
+						<input type="text" name="email" placeholder="ejemplo@gmail.com" class="inpuText">
+					.field
+						label Contraseña
+						<input type="password" name="password" placeholder="********" class="inpuText">
+					<button class="ui button login__form__submit" type="submit">Iniciar sesión</button>
+				.login__otherUser
+					a(href="#").login__otherUser__login
+						<i class="user secret icon"></i>
+						p Administrador
+			a(href="").access
+				<i class="user secret icon"></i>
+				//- p Administrador

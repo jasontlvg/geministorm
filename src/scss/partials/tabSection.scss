@@ -115,7 +115,9 @@
             &--surveysSection{
                 display: flex;
                 justify-content: center;
+                // align-items: center;
                 flex-wrap: wrap;
+                // height: 100%;
                 // background: green;
 
                 &__surveysContainer{
@@ -210,6 +212,54 @@
                     }
 
 
+                }
+
+                &__surveysColorLegend{
+                    width: 100%;
+                    // background: red;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 2em;
+                    &__block{
+                        display: flex;
+                        &--2{
+                            margin-top: 1.3em;
+                        }
+                        &__des{
+                           
+
+                            display: flex;
+                            align-items: center;
+                            margin-left: 1em;
+                            .color-bg{
+                                width: 20px;
+                                height: 20px;
+                                background: $rojo;
+
+                                &--azul{
+                                    background-color: $azul;
+                                }
+
+                                &--amarillo{
+                                    background-color: $amarillo;
+                                }
+
+                                &--verde{
+                                    background-color: $verde;
+                                }
+
+
+                            }
+                            .description{
+                                font-size: 1em;
+                                margin: 0;
+                                margin-left: 0.5em;
+                            }
+                        }
+
+                        }
                 }
 
 

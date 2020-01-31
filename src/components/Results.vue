@@ -65,7 +65,7 @@
                     <div class="positioner positioner--top">
                         <!-- Practica -->
                         <!-- <div class="positioner__box positioner__box__leftColumn" v-bind:class="{alert:promediosGlobales[practica[0]]<3 || encuestaMenor == promediosGlobales[practica[0]], disabled:practica.length == 0}"> -->
-                        <div class="positioner__box positioner__box__leftColumn" v-bind:class="{verde: promediosGlobales[practica[0]]>2.9999 && flags[practica[1]]==0,rojo: promediosGlobales[practica[0]] == encuestaMenor, amarillo: practica[3] == 1, amarillo: flags[practica[1]] == indicadorMasAlto}">
+                        <div class="positioner__box positioner__box__leftColumn" v-bind:class="{verde: promediosGlobales[practica[0]]>minus && flags[practica[1]]==0,rojo: promediosGlobales[practica[0]] == encuestaMenor, amarillo: practica[3] == 1, amarillo: flags[practica[1]] == indicadorMasAlto}">
                             <div class="positioner__box__leftColumn__leftSide">
                                 <i class="clipboard list icon"></i>
                                 <h2 class="up">Practica</h2>
@@ -81,7 +81,7 @@
                         </div>
 
                         <!-- Procesos -->
-                        <div class="positioner__box positioner__box__rightColumn" v-bind:class="{verde: promediosGlobales[procesos[0]]>2.9999 && flags[procesos[1]]==0,rojo: promediosGlobales[procesos[0]] == encuestaMenor, amarillo: procesos[3] == 1, amarillo: flags[procesos[1]] == indicadorMasAlto}">
+                        <div class="positioner__box positioner__box__rightColumn" v-bind:class="{verde: promediosGlobales[procesos[0]]>minus && flags[procesos[1]]==0,rojo: promediosGlobales[procesos[0]] == encuestaMenor, amarillo: procesos[3] == 1, amarillo: flags[procesos[1]] == indicadorMasAlto}">
                             <div class="positioner__box__rightColumn__leftSide">
                                 <!-- <i class="info circle icon"></i> -->
                                 <i v-if="procesos.length > 0" class="info circle icon" @click="nextPage($event,procesos[0],procesos[1])"></i>
@@ -101,7 +101,7 @@
                     <div class="positioner positioner--bottom">
                         <!-- Personas -->
                         <!-- <div class="positioner__box positioner__box__leftColumn" v-bind:class="{alert:promediosGlobales[personas[0]]<3 || encuestaMenor == promediosGlobales[personas[0]], disabled:personas.length == 0}"> -->
-                        <div class="positioner__box positioner__box__leftColumn" v-bind:class="{verde: promediosGlobales[personas[0]]>2.9999 && flags[personas[1]]==0,rojo: promediosGlobales[personas[0]] == encuestaMenor, amarillo: personas[3] == 1, amarillo: flags[personas[1]] == indicadorMasAlto}">
+                        <div class="positioner__box positioner__box__leftColumn" v-bind:class="{verde: promediosGlobales[personas[0]]>minus && flags[personas[1]]==0,rojo: promediosGlobales[personas[0]] == encuestaMenor, amarillo: personas[3] == 1, amarillo: flags[personas[1]] == indicadorMasAlto}">
                             <div class="positioner__box__leftColumn__leftSide">
                                 <h2 class="down">Personas</h2>
                                 <i class="users icon"></i>
@@ -116,7 +116,7 @@
                         </div>
 
                         <!-- Producto -->
-                        <div class="positioner__box positioner__box__rightColumn" v-bind:class="{verde: promediosGlobales[producto[0]]>2.9999 && flags[producto[1]]==0,rojo: promediosGlobales[producto[0]] == encuestaMenor, amarillo: producto[3] == 1, amarillo: flags[producto[1]] == indicadorMasAlto}">
+                        <div class="positioner__box positioner__box__rightColumn" v-bind:class="{verde: promediosGlobales[producto[0]]>minus && flags[producto[1]]==0,rojo: promediosGlobales[producto[0]] == encuestaMenor, amarillo: producto[3] == 1, amarillo: flags[producto[1]] == indicadorMasAlto}">
                             <div class="positioner__box__rightColumn__leftSide">
                                 <!-- <i class="info circle icon"></i> -->
                                 <!-- <i class="info circle icon" @click="nextPage($event,producto[0],producto[1])"></i> -->
@@ -132,7 +132,7 @@
                     </div>
                     <!-- <div class="oval"></div>
                     <div class="oval oval__border"></div> -->
-                    <div class="oval" v-bind:class="{verde: promediosGlobales[acr[0]]>2.9999 && flags[acr[1]]==0,rojo: promediosGlobales[acr[0]] == encuestaMenor, amarillo: acr[3] == 1, amarillo: flags[acr[1]] == indicadorMasAlto}">
+                    <div class="oval" v-bind:class="{verde: promediosGlobales[acr[0]]>minus && flags[acr[1]]==0,rojo: promediosGlobales[acr[0]] == encuestaMenor, amarillo: acr[3] == 1, amarillo: flags[acr[1]] == indicadorMasAlto}">
                         <div class="caja">
                             <div class="bottom">
                                 <h2>Act. de Cambio Rapido</h2>
@@ -211,7 +211,8 @@
                         </div>
                         <div class="main__tabSection__titleContainer--surveySection__detailsContainer__detail main__tabSection__titleContainer--surveySection__detailsContainer__detail--media">
                             <h3 class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__title main__tabSection__titleContainer--surveySection__detailsContainer__detail--media__title">Media</h3>
-                            <p class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__name main__tabSection__titleContainer--surveySection__detailsContainer__detail--media__name" :class="{alert: promediosGlobales[encuestaIdSeleccionado]<=3}">{{promediosGlobales[encuestaIdSeleccionado]}}</p>
+                            
+                            <p class="main__tabSection__titleContainer--surveySection__detailsContainer__detail__name main__tabSection__titleContainer--surveySection__detailsContainer__detail--media__name" :class="{alert: promediosGlobales[encuestaIdSeleccionado]<=minus}">{{promediosGlobales[encuestaIdSeleccionado]}}</p> 
                         </div>
 
                     </div>
@@ -232,7 +233,7 @@
                         </form>
 
 
-                        <button class="ui green button main__tabSection__titleContainer--surveySection__detailsContainer__button" :class="{disabled: promediosGlobales[encuestaIdSeleccionado]>3}" @click='reactivarEncuesta'>Reactivar Encuesta</button>
+                        <button class="ui green button main__tabSection__titleContainer--surveySection__detailsContainer__button" :class="{disabled: promediosGlobales[encuestaIdSeleccionado]>minus}" @click='reactivarEncuesta'>Reactivar Encuesta</button>
 
                         
                     </div>
@@ -262,14 +263,14 @@
                     <tbody class="main__tabSection__body main__tabSection__body--surveySection__table__tbody">
                         <tr v-for="(x,index) in preguntasEncuestaSeleccionado" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr" :key="x[0]">
                             <!-- <td :data-tooltip="lolo[0]" data-label="Name" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td" >{{(index+1)+ '. ' +x.pregunta}}</td> -->
-                            <td v-if="promedioDePreguntasDeEncuestaSeleccionada[index]>3" data-label="Name" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td" >{{(index+1)+ '. ' +x.pregunta}}</td>
+                            <td v-if="promedioDePreguntasDeEncuestaSeleccionada[index]>minus" data-label="Name" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td" >{{(index+1)+ '. ' +x.pregunta}}</td>
                             <td v-else :data-tooltip="indicadores[index].indicador" data-inverted="" data-label="Name" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td" >{{(index+1)+ '. ' +x.pregunta}}</td>                       
                             <!-- Ignorar el de abajo -->
                             
                             <!-- <td data-label="Age">{{promedioDePreguntasDeEncuestaSeleccionada[index]}}</td> -->
                             <td data-label="Media" style="text-align:center" class="main__tabSection__body main__tabSection__body--surveySection__table__tbody__tr__td">
                                 <a class="item">
-                                    <div class="ui horizontal label" :class="{green: promedioDePreguntasDeEncuestaSeleccionada[index]>2.9999, red:promedioDePreguntasDeEncuestaSeleccionada[index]<=2.9999}" >{{promedioDePreguntasDeEncuestaSeleccionada[index]}}</div>
+                                    <div class="ui horizontal label" :class="{green: promedioDePreguntasDeEncuestaSeleccionada[index]>minus, red:promedioDePreguntasDeEncuestaSeleccionada[index]<=minus}" >{{promedioDePreguntasDeEncuestaSeleccionada[index]}}</div>
                                 </a>
                                 <!-- {{promedioDePreguntasDeEncuestaSeleccionada[index]}} -->
                             </td>
@@ -349,6 +350,7 @@
                 // promediosIndividualesDeEncuestaSeleccionada: [],
                 lolo: ['uno', 'dos'],
                 indicadorMasAlto: -10,
+                minus: 2.9999,
             }
         },
         created: function(){
@@ -430,7 +432,7 @@
                         let flag=0;
                         for (const promedioPregunta of promediosPregunta) {
                             sum= sum + promedioPregunta;
-                            if(promedioPregunta<=2.9999){
+                            if(promedioPregunta<=este.minus){
                                 flag++;
                             }
                         }
@@ -604,7 +606,7 @@
                 if(v == 'last'){
                     let section= document.getElementById('tabSurvey');
                     section.classList.toggle('show')
-                    este.indicadores= ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',];
+                    this.indicadores= ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',];
                     
                 }
             },

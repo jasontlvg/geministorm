@@ -8,6 +8,7 @@ export class AdminLayout{
         const large=960;
         const aside= document.getElementById('aside');
         const overlay= document.getElementById('aside-overlay');
+        let flagWasPressed= false; // Nuevo
         
         const tf= function(){
         
@@ -26,9 +27,13 @@ export class AdminLayout{
         
             // console.dir(icons[0].classList.toggle('showText'))
         };
-        
-        // trigger.addEventListener('click', tf);
-        burguer.addEventListener('click', tf);
+
+        // burguer.addEventListener('click', tf);
+        burguer.addEventListener('click', function(){
+            tf();
+            flagWasPressed= !flagWasPressed;
+        });
+
         
         overlay.addEventListener('click', function(){
             aside.classList.toggle('morfosis');
@@ -39,6 +44,22 @@ export class AdminLayout{
             if(this.innerWidth >= large){
                 overlay.classList.remove('active')
                 aside.classList.remove('morfosis')
+            }
+        });
+
+        // Nuevo
+        let flag= false;
+        aside.addEventListener('mouseover', function(){
+            if(!flag && !flagWasPressed){
+                tf();
+                flag= true;
+            }
+        });
+
+        aside.addEventListener('mouseleave', function(){
+            if(flag && !flagWasPressed){
+                tf();
+                flag=false;
             }
         });
     }

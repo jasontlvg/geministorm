@@ -23,9 +23,9 @@ $('.ui.search.dropdown').dropdown();
 $('.ui.form')
   .form({
     fields: {
-        nombre: 'empty',
-        clave: 'empty'
-    }
+      nombre: 'empty',
+      clave: "minLength[6]",
+  }
   })
 ;
 

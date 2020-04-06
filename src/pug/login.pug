@@ -12,7 +12,7 @@ html(lang="en")
 				.welcome__titles
 					.logoContainer
 						h1.logoContainer__title 4P'S
-					h2.welcome__titles__h ChangeOvers
+					h2.welcome__titles__h ChangeOver
 			section.login
 				.login__header
 					h2 Inicio de sesión
@@ -20,9 +20,15 @@ html(lang="en")
 					.field
 						label Correo
 						<input type="text" name="email" placeholder="ejemplo@gmail.com" class="inpuText">
+					<span class="error-msg" role="alert">
+						<strong class="alert">  The email must be a valid email address. </strong>
+					</span>
 					.field
 						label Contraseña
 						<input type="password" name="password" placeholder="********" class="inpuText">
+					<span class="error-msg" role="alert">
+						<strong class="alert">  The email must be a valid email address. </strong>
+					</span>
 					<button class="ui button login__form__submit" type="submit">Iniciar sesión</button>
 				.login__otherUser
 					a(href="#").login__otherUser__login

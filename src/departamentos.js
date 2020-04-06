@@ -25,7 +25,8 @@ $('.ui.form')
   .form({
     fields: {
         nombre: 'empty',
-        clave: 'empty',
+        clave: "minLength[6]", 
+        
     }
   })
 ;
